@@ -1,951 +1,1105 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#721f2c" />
-    <meta name="description" content="Kim Creative — strategy-led social media, conversion copy, and creative systems for brands with something worth saying." />
-    <title>Kim Creative — Strategy people can feel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
-    <style>
-:root {
-  --maroon: #721f2c;
-  --maroon-deep: #451018;
-  --red: #b92f2f;
-  --spice: #df4c38;
-  --cream: #f6eddf;
-  --cream-2: #ead9c5;
-  --ink: #261a19;
-  --muted: #765f59;
-  --line: rgba(69, 16, 24, 0.18);
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "DM Sans", Arial, sans-serif;
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Kim Creative: independent creative strategist. Strategy people understand, creative they can feel.">
+<meta name="theme-color" content="#16070B">
+<style>[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Kim Creative — Strategy people can feel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  /* wine & rose gold — token names kept so every component re-themes from here */
+  --bg:#16070B;            /* wine-black */
+  --surface-1:#220B11;
+  --surface-2:#2E0F18;
+  --glass:rgba(34,10,16,.55);
+  --red:#9E1230;           /* cherry: fills only */
+  --red-bright:#E7B29C;    /* rose gold: accent text, lines, highlights */
+  --red-line:rgba(231,178,156,.28);
+  --red-line-soft:rgba(231,178,156,.15);
+  --blush:#F2D3C9;
+  --wine-ink:#2A0710;
+  --text:#F6EAE4;          /* warm ivory */
+  --muted:#D2BAB3;
+  --dim:#A38C88;
+  --gold-text:linear-gradient(100deg,#F7D9CB 0%,#E2A68D 42%,#F3CDBC 68%,#D8957B 100%);
+  --display:"Instrument Serif","Bodoni 72","Didot",Georgia,serif;
+  --body:"Jost","Futura","Century Gothic","Helvetica Neue",Arial,sans-serif;
+  --mono:"Jost","Futura","Century Gothic","Helvetica Neue",Arial,sans-serif;
+  --r-lg:24px;
+  --r-md:18px;
+  --r-sm:12px;
+  --gutter:clamp(16px,5vw,64px);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.025em;line-height:1.02}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red-bright);outline-offset:3px;border-radius:4px}
+
+/* ---------- drifting smoke behind the whole page ---------- */
+.smoke{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.smoke-layer{
+  position:absolute;inset:-28%;
+  background:url("smoke.jpg") center/cover no-repeat;
+  mix-blend-mode:lighten;
+  will-change:transform;
+}
+.smoke-b{background-position:68% 28%;background-size:170%;opacity:.78}
+.smoke::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(58% 42% at 19% 30%,rgba(22,7,11,.62),transparent 60%);
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* ---------- shared ---------- */
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0}
+.eyebrow .num{color:var(--red-bright)}
+.rd{color:var(--red-bright)}
+.lede{color:var(--muted);max-width:62ch}
+.section{padding-block:clamp(72px,10vw,132px);position:relative}
+.section + .section{border-top:1px solid rgba(255,255,255,.055)}
+.sec-head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(36px,5vw,56px)}
+h2.big{font-size:clamp(34px,5.6vw,68px);font-weight:400}
+h3.mid{font-size:clamp(24px,3vw,36px);font-weight:400}
+.rule{height:1px;background:linear-gradient(90deg,var(--red-line),transparent);border:0;margin:0}
+
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--red-line-soft);
+  border-radius:var(--r-lg);
+  transition:border-color .35s ease,box-shadow .35s ease,transform .35s ease;
 }
-button, input { font: inherit; }
-button { color: inherit; }
-a { color: inherit; text-decoration: none; }
-.grain {
-  position: fixed; inset: 0; opacity: .055; pointer-events: none; z-index: 50;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
-}
-.section-pad { padding-left: clamp(22px, 5vw, 80px); padding-right: clamp(22px, 5vw, 80px); }
-.nav-shell {
-  position: sticky; top: 0; z-index: 40; height: 74px; padding: 0 clamp(22px, 5vw, 80px);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  background: color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(69,16,24,.12);
-}
-.wordmark { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 19px; white-space: nowrap; }
-.wordmark-dot { width: 17px; height: 17px; border: 2px solid var(--maroon); border-radius: 50%; position: relative; }
-.wordmark-dot::after { content:""; position:absolute; width:6px; height:6px; background:var(--spice); border-radius:50%; right:-4px; bottom:-2px; }
-.nav-shell nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); font-size: 13px; font-weight: 600; }
-.nav-shell nav a { position: relative; }
-.nav-shell nav a::after { content:""; position:absolute; left:0; right:100%; bottom:-6px; height:1px; background:var(--maroon); transition:.25s; }
-.nav-shell nav a:hover::after { right:0; }
-.nav-cta { border: 0; background: var(--maroon); color: var(--cream); padding: 11px 17px; border-radius: 99px; cursor: pointer; font-size: 12px; font-weight: 700; }
-.nav-cta span { margin-left: 8px; }
-
-.hero { min-height: 100vh; padding-top: 30px; }
-.eyebrow { display:flex; justify-content:space-between; padding: 12px 0 18px; font-size: 10px; text-transform: uppercase; letter-spacing: .18em; border-bottom:1px solid var(--line); }
-.hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(380px,.95fr); min-height:680px; align-items:center; gap:clamp(35px,5vw,80px); }
-.hero-copy { padding: 72px 0; }
-.kicker { color:var(--maroon); font-family:var(--serif); font-size:clamp(18px,2vw,29px); line-height:1.05; margin:0 0 22px; }
-.kicker em { color:var(--spice); }
-h1 { font-family:var(--serif); font-size:clamp(48px,6.7vw,106px); line-height:.9; letter-spacing:-.055em; font-weight:600; margin:0; max-width:1000px; }
-h1 span { display:block; color:var(--maroon); font-style:italic; }
-.hero-lede { margin:34px 0 0; max-width:640px; font-size:clamp(16px,1.5vw,21px); line-height:1.55; color:var(--muted); }
-.hero-actions { display:flex; align-items:center; gap:26px; margin-top:34px; flex-wrap:wrap; }
-.hero-trust { margin:22px 0 0; font-size:11px; letter-spacing:.06em; color:var(--muted); }
-.btn { border:0; border-radius:99px; padding:15px 22px; cursor:pointer; font-weight:700; font-size:13px; transition:transform .25s, box-shadow .25s; }
-.btn:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(69,16,24,.16); }
-.btn span { margin-left:20px; }
-.btn-primary { background:var(--maroon); color:var(--cream); }
-.text-link { border:0; background:transparent; padding:10px 0; border-bottom:1px solid var(--maroon); cursor:pointer; font-size:13px; font-weight:700; }
-.text-link span { margin-left:10px; }
-.hero-art { height:580px; position:relative; display:grid; place-items:center; isolation:isolate; }
-.hero-art::before { content:""; position:absolute; width:min(31vw,440px); aspect-ratio:1; border-radius:48% 52% 41% 59%; background:var(--maroon); transform:rotate(-8deg); z-index:-2; box-shadow:30px 32px 0 var(--spice); }
-.orbit { position:absolute; border:1px solid rgba(246,237,223,.55); border-radius:50%; z-index:-1; }
-.orbit-one { width:78%; aspect-ratio:1; transform:rotate(12deg) scaleY(.72); }
-.orbit-two { width:52%; aspect-ratio:1; transform:rotate(-24deg) scaleY(1.3); }
-.strategy-card { position:absolute; background:#fffaf2; box-shadow:0 26px 60px rgba(38,26,25,.25); }
-.card-main { width:65%; min-width:300px; padding:28px; transform:rotate(-2deg); }
-.micro { text-transform:uppercase; letter-spacing:.14em; font-size:10px; font-weight:700; }
-.card-main strong { display:block; font-family:var(--serif); font-size:26px; line-height:1.04; color:var(--maroon); margin:20px 0; }
-.card-main p { font-size:12px; line-height:1.5; margin-bottom:0; color:var(--muted); }
-.signal-line { height:58px; display:flex; gap:7px; align-items:flex-end; border-bottom:1px solid var(--line); }
-.signal-line i { display:block; width:18%; background:var(--spice); }
-.signal-line i:nth-child(1){height:23%}.signal-line i:nth-child(2){height:52%}.signal-line i:nth-child(3){height:38%}.signal-line i:nth-child(4){height:72%}.signal-line i:nth-child(5){height:94%;background:var(--maroon)}
-.card-note { padding:14px 18px; font-family:var(--serif); font-size:14px; left:4%; top:18%; transform:rotate(-7deg); }
-.card-note span { color:var(--spice); font-family:var(--sans); font-size:9px; margin-right:8px; }
-.card-note-two { left:auto; right:-1%; top:68%; transform:rotate(8deg); }
-.scribble { position:absolute; color:var(--cream); font-family:var(--serif); font-style:italic; font-size:16px; line-height:1.1; right:3%; top:18%; transform:rotate(7deg); }
-.seal { position:absolute; bottom:7%; left:10%; color:var(--cream); display:flex; align-items:center; gap:9px; transform:rotate(-8deg); }
-.seal>span { width:50px; height:50px; border:1px solid var(--cream); border-radius:50%; display:grid; place-items:center; font-family:var(--serif); font-size:20px; }
-.seal small { font-size:8px; line-height:1.4; letter-spacing:.1em; }
-.marquee { width:calc(100% + clamp(44px,10vw,160px)); margin-left:calc(clamp(22px,5vw,80px) * -1); overflow:hidden; background:var(--maroon); color:var(--cream); padding:14px 0; }
-.marquee-track { width:max-content; display:flex; gap:28px; align-items:center; animation:marquee 25s linear infinite; text-transform:uppercase; letter-spacing:.12em; font-size:11px; }
-.marquee-track i { color:var(--spice); font-style:normal; }
-@keyframes marquee { to { transform:translateX(-50%); } }
-
-.about-block { position:relative; display:grid; grid-template-columns:minmax(260px,.65fr) minmax(420px,1.35fr); gap:clamp(42px,7vw,110px); align-items:center; padding:120px 0 40px; overflow:hidden; }
-.about-photo-wrap { position:relative; max-width:430px; }
-.about-photo-wrap::before { content:""; position:absolute; inset:18px -18px -18px 18px; background:var(--spice); z-index:-1; }
-.about-photo { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 35%; filter:saturate(.78) contrast(1.02); }
-.about-photo-label { position:absolute; left:18px; bottom:18px; padding:8px 11px; background:rgba(246,237,223,.92); color:var(--maroon); font-size:9px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; }
-.about-copy { max-width:740px; position:relative; z-index:2; }
-.about-copy>.micro { color:var(--spice); margin:0 0 18px; }
-.about-copy h2 { font-family:var(--serif); color:var(--maroon); font-size:clamp(45px,5.8vw,82px); line-height:.92; letter-spacing:-.05em; margin:0 0 28px; font-weight:600; }
-.about-copy h2 em { color:var(--spice); }
-.about-copy>p:not(.micro) { color:var(--muted); max-width:650px; font-size:clamp(16px,1.5vw,20px); line-height:1.62; }
-.about-copy strong { display:block; max-width:560px; margin-top:28px; padding-top:20px; border-top:1px solid var(--line); font-family:var(--serif); font-size:20px; line-height:1.3; color:var(--maroon); }
-.about-mark { position:absolute; right:0; bottom:-70px; font-family:var(--serif); font-size:330px; line-height:1; color:rgba(114,31,44,.045); pointer-events:none; }
-
-.services-block { padding:120px 0 135px; }
-.section-heading { display:grid; grid-template-columns:minmax(180px,.45fr) minmax(420px,1.25fr) minmax(220px,.5fr); gap:clamp(28px,5vw,80px); align-items:start; }
-.section-heading>div { display:flex; align-items:center; gap:13px; padding-top:12px; }
-.section-heading .number { color:var(--spice); font-family:var(--serif); font-weight:700; }
-.section-heading .label { font-size:10px; text-transform:uppercase; letter-spacing:.15em; font-weight:700; }
-.section-heading h2 { font-family:var(--serif); color:var(--maroon); font-size:clamp(40px,5vw,75px); line-height:.94; letter-spacing:-.045em; margin:0; font-weight:600; }
-.section-heading h2 em { color:var(--spice); font-weight:600; }
-.section-heading>p { font-size:14px; line-height:1.65; color:var(--muted); margin:12px 0 0; }
-.service-tabs { display:flex; gap:8px; margin:78px 0 20px; padding-left:calc(26% - 20px); }
-.service-tab,.filter { border:1px solid var(--line); border-radius:99px; padding:10px 17px; background:transparent; cursor:pointer; color:var(--muted); font-size:12px; transition:.2s; }
-.service-tab.active,.filter.active,.service-tab:hover,.filter:hover { background:var(--maroon); color:var(--cream); border-color:var(--maroon); }
-.service-stage { min-height:270px; display:grid; grid-template-columns:.24fr .85fr .65fr 60px; gap:clamp(24px,4vw,62px); align-items:center; padding:46px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.service-index { font-family:var(--serif); color:var(--spice); font-size:52px; }
-.service-overline { color:var(--spice); margin:0 0 13px; }
-.service-title { font-family:var(--serif); font-size:clamp(27px,3vw,42px); line-height:1; margin:0 0 13px; color:var(--maroon); }
-.service-description { color:var(--muted); line-height:1.6; font-size:14px; max-width:550px; }
-.service-list { list-style:none; padding:0; margin:0; color:var(--muted); font-size:13px; }
-.service-list li { padding:10px 0; border-bottom:1px solid var(--line); }
-.service-list li::before { content:"✦"; color:var(--spice); margin-right:10px; font-size:8px; }
-.round-arrow { width:56px; height:56px; border-radius:50%; background:var(--spice); color:var(--cream); border:0; font-size:20px; cursor:pointer; transition:.2s; }
-.round-arrow:hover { transform:rotate(-15deg) scale(1.05); }
-
-.work { background:var(--maroon-deep); color:var(--cream); padding-top:120px; padding-bottom:140px; }
-.section-heading.light h2 { color:var(--cream); }
-.section-heading.light h2 em { color:#f37a5f; }
-.section-heading.light>p { color:rgba(246,237,223,.67); }
-.section-heading.light>div { color:var(--cream); }
-.filters { display:flex; gap:8px; flex-wrap:wrap; margin:72px 0 28px; }
-.filter { border-color:rgba(246,237,223,.2); color:rgba(246,237,223,.66); }
-.filter.active,.filter:hover { color:var(--maroon-deep); background:var(--cream); border-color:var(--cream); }
-.filter span { margin-left:9px; opacity:.6; }
-.case-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.case-card { min-height:650px; background:#f1e4d4; color:var(--ink); display:grid; grid-template-rows:1.12fr .88fr; cursor:pointer; overflow:hidden; transition:transform .25s, opacity .25s; }
-.case-card:hover { transform:translateY(-5px); }
-.case-card[hidden] { display:none; }
-.case-card.feature { grid-column:span 2; grid-template-columns:1.14fr .86fr; grid-template-rows:1fr; min-height:540px; }
-.case-card.wide { grid-column:span 2; grid-template-columns:1fr 1fr; grid-template-rows:1fr; min-height:520px; }
-.case-visual { min-height:330px; position:relative; overflow:hidden; isolation:isolate; }
-.concept-tag { position:absolute; top:18px; left:18px; z-index:5; background:rgba(246,237,223,.92); color:var(--maroon); padding:7px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:.12em; font-size:8px; font-weight:700; }
-.asset-board { background:#d8cbbb; padding:18px; display:grid; place-items:center; }
-.asset-board>img { display:block; width:100%; height:100%; object-fit:contain; box-shadow:0 18px 42px rgba(38,26,25,.22); }
-.lumen-board { background:#6f252b; }
-.freshspace-board { background:#d7e1d9; }
-.brightsmile-board { background:#c7d6e1; }
-.courtside-board { background:#142f28; padding:14px; }
-.feed-grid { width:100%; height:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(0,1fr)); gap:7px; }
-.feed-grid img { display:block; min-width:0; width:100%; height:100%; object-fit:cover; object-position:center; box-shadow:0 10px 24px rgba(7,22,18,.22); }
-.product-visual { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:18px; background:#e8d3cc; }
-.product-visual>img { min-width:0; width:100%; height:100%; object-fit:cover; box-shadow:0 18px 42px rgba(38,26,25,.18); }
-.case-copy { padding:30px; display:flex; flex-direction:column; align-items:flex-start; }
-.case-meta { width:100%; display:flex; justify-content:space-between; font-size:9px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); }
-.case-copy h3 { font-family:var(--serif); font-size:clamp(34px,4vw,56px); line-height:1; margin:22px 0 13px; color:var(--maroon); }
-.case-copy>p { color:var(--muted); font-size:14px; line-height:1.6; max-width:600px; }
-.case-chips { display:flex; gap:6px; flex-wrap:wrap; margin:13px 0 20px; }
-.case-chips span { padding:7px 9px; border:1px solid var(--line); border-radius:99px; font-size:9px; text-transform:uppercase; letter-spacing:.06em; }
-.case-open { margin-top:auto; padding:10px 0; border:0; border-bottom:1px solid var(--maroon); background:transparent; color:var(--maroon); font-weight:700; font-size:12px; cursor:pointer; }
-.case-open span { margin-left:12px; }
-.lumen-visual { background:#1f2723; display:grid; place-items:center; }
-.lumen-visual::before { content:""; position:absolute; width:45%; height:100%; background:linear-gradient(120deg,transparent,#f4c98426); left:15%; transform:skew(-8deg); }
-.lumen-word { color:#f6eddf; font-family:var(--serif); font-size:clamp(48px,7vw,105px); letter-spacing:-.07em; z-index:2; line-height:.7; }
-.lumen-word span { display:block; font-family:var(--sans); font-size:.16em; letter-spacing:.46em; margin-left:7px; color:#e5ad62; }
-.lamp { position:absolute; right:10%; top:12%; width:28%; height:70%; border:1px solid #e5ad6269; border-radius:50% 50% 10% 10%; transform:rotate(5deg); }
-.lamp::after { content:""; position:absolute; top:17%; left:15%; right:15%; bottom:17%; background:radial-gradient(circle,#f3c86b55,transparent 70%); }
-.mock-caption { position:absolute; left:6%; bottom:7%; color:#fff; display:flex; flex-direction:column; gap:6px; }
-.mock-caption span { font-size:8px; letter-spacing:.15em; opacity:.7; }
-.mock-caption strong { font-family:var(--serif); font-size:13px; font-style:italic; max-width:210px; }
-.muse-visual { background:#e96e65; display:grid; place-items:center; }
-.muse-poster { width:64%; height:72%; background:#fae6cd; padding:25px; transform:rotate(-4deg); box-shadow:16px 18px 0 #722034; position:relative; display:flex; flex-direction:column; justify-content:center; }
-.muse-poster small { color:var(--spice); font-weight:700; letter-spacing:.13em; }
-.muse-poster strong { font-family:var(--serif); color:var(--maroon); font-size:clamp(32px,4vw,54px); line-height:.88; margin-top:15px; }
-.muse-poster i { position:absolute; font-family:var(--serif); font-size:180px; color:#c7373720; right:5%; bottom:-20%; }
-.muse-swatch { position:absolute; width:70px; height:70px; border:12px solid #b1223d; border-radius:50%; top:10%; right:8%; }
-.northstar-visual { background:#adb9a8; display:grid; place-items:center; }
-.north-window { width:73%; height:74%; background:linear-gradient(145deg,#f7e4cb,#9bb5ad); border:18px solid #f5e8d8; display:grid; place-items:end start; padding:28px; box-shadow:0 20px 45px #39534b54; }
-.north-window span { color:#314b43; font-family:var(--serif); font-size:clamp(22px,3vw,39px); line-height:.92; }
-.north-note { position:absolute; background:#f3e6d5; color:#385048; padding:13px 17px; right:6%; bottom:8%; transform:rotate(5deg); font-family:var(--serif); font-style:italic; font-size:12px; box-shadow:0 10px 24px #38504833; }
-.built-visual { background:#d8bb67; display:grid; place-items:center; color:#301710; }
-.built-type { font-family:var(--sans); font-size:clamp(52px,7vw,92px); font-weight:800; line-height:.7; letter-spacing:-.08em; transform:rotate(-3deg); }
-.built-type small { font-size:.16em; letter-spacing:.2em; display:block; }
-.built-type em { font-family:var(--serif); color:#8c231f; }
-.built-stamp { position:absolute; right:8%; top:13%; border:2px solid #8c231f; color:#8c231f; padding:9px; transform:rotate(8deg); font-size:10px; font-weight:800; }
-.built-line { position:absolute; bottom:8%; left:8%; right:8%; border-top:1px solid #301710; padding-top:10px; font-size:9px; letter-spacing:.14em; }
-.compass-visual { background:#aeb4a1; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#263b32; }
-.compass-ring { width:250px; height:250px; border:1px solid #263b32; border-radius:50%; display:flex; align-items:center; justify-content:center; gap:10px; font-size:9px; letter-spacing:.15em; position:relative; }
-.compass-ring::before,.compass-ring::after { content:""; position:absolute; inset:17px; border:1px solid #f4ead8; border-radius:50%; }
-.compass-ring::after { inset:58px; border-color:#263b32; }
-.compass-ring strong { color:#8c2d2d; font-size:24px; }
-.compass-visual blockquote { position:absolute; max-width:290px; bottom:6%; left:6%; margin:0; background:#f6eddf; padding:13px 16px; font-family:var(--serif); font-style:italic; font-size:15px; transform:rotate(-3deg); }
-.compass-path { position:absolute; top:15%; right:8%; display:flex; flex-direction:column; gap:7px; }
-.compass-path i { width:8px; height:8px; border-radius:50%; background:#8c2d2d; opacity:.4; }
-.compass-path i:nth-child(2){opacity:.6}.compass-path i:nth-child(3){opacity:.8}.compass-path i:nth-child(4){opacity:1}
-
-.inquiry { padding-top:120px; padding-bottom:25px; }
-.process-grid { display:grid; grid-template-columns:repeat(4,1fr); margin:75px 0 125px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.process-grid article { padding:34px 25px 38px; border-right:1px solid var(--line); }
-.process-grid article:last-child { border:0; }
-.process-grid span { font-family:var(--serif); color:var(--spice); font-size:13px; }
-.process-grid h3 { color:var(--maroon); font-family:var(--serif); font-size:26px; margin:45px 0 12px; }
-.process-grid p { color:var(--muted); line-height:1.55; font-size:13px; }
-.ticket-ladder { padding:0 0 40px; margin-bottom:60px; }
-.ladder-heading { max-width:620px; margin:0 auto 30px; text-align:center; }
-.ladder-heading .micro { color:var(--spice); }
-.ladder-heading h3 { color:var(--maroon); font-family:var(--serif); font-size:clamp(30px,4vw,42px); line-height:1.05; margin:14px 0; }
-.ladder-heading h3 em { font-style:italic; }
-.ladder-heading>p:not(.micro) { color:var(--muted); line-height:1.55; font-size:14px; }
-.ladder-flow { text-align:center; font-size:10px; text-transform:uppercase; letter-spacing:.13em; color:var(--muted); margin:0 0 40px; }
-.ladder-flow span { color:var(--spice); margin:0 4px; }
-.ticket-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; align-items:end; }
-.ticket {
-  position:relative; background:#fffaf2; border:1px dashed var(--maroon); padding:26px 22px 24px;
-  display:flex; flex-direction:column; min-height:400px;
-}
-.ticket::before,.ticket::after {
-  content:""; position:absolute; top:50%; width:16px; height:16px; background:var(--cream);
-  border-radius:50%; transform:translateY(-50%); border:1px dashed var(--maroon);
-}
-.ticket::before { left:-9px; } .ticket::after { right:-9px; }
-.ticket-anchor { background:var(--maroon); color:var(--cream); border-color:var(--cream); transform:translateY(-14px); min-height:430px; }
-.ticket-anchor::before,.ticket-anchor::after { background:var(--maroon-deep); border-color:rgba(246,237,223,.5); }
-.ticket-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-.ticket-num { font-family:var(--serif); color:var(--spice); font-size:26px; }
-.ticket-anchor .ticket-num { color:#f3a98c; }
-.ticket-tag { font-size:9px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; color:var(--muted); }
-.ticket-anchor .ticket-tag { color:rgba(246,237,223,.7); }
-.ticket h4 { font-family:var(--serif); color:var(--maroon); font-size:22px; line-height:1.1; margin:0 0 10px; }
-.ticket-anchor h4 { color:var(--cream); }
-.ticket-hook { font-family:var(--serif); font-style:italic; font-size:14px; color:var(--muted); margin:0 0 16px; }
-.ticket-anchor .ticket-hook { color:rgba(246,237,223,.85); }
-.ticket-list { list-style:none; padding:0; margin:0 0 16px; font-size:11.5px; color:var(--muted); }
-.ticket-anchor .ticket-list { color:rgba(246,237,223,.8); }
-.ticket-list li { padding:6px 0; border-bottom:1px dashed var(--line); }
-.ticket-anchor .ticket-list li { border-bottom-color:rgba(246,237,223,.2); }
-.ticket-deliverable { font-size:11px; color:var(--muted); line-height:1.5; margin:0 0 18px; }
-.ticket-anchor .ticket-deliverable { color:rgba(246,237,223,.75); }
-.ticket-cta { margin-top:auto; border:0; background:transparent; border-bottom:1px solid var(--maroon); color:var(--maroon); font-weight:700; font-size:12px; padding:8px 0; cursor:pointer; align-self:flex-start; }
-.ticket-anchor .ticket-cta { color:var(--cream); border-bottom-color:var(--cream); }
-.ticket-cta span { margin-left:8px; }
-.ladder-note { text-align:center; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-top:34px; }
-.response-time { font-size:11px; color:rgba(246,237,223,.65); margin:8px 0 0; }
-.footer-authority { display:block; margin-top:6px; opacity:.7; font-size:9px; }
-.contact-card { min-height:500px; background:var(--maroon); color:var(--cream); padding:clamp(34px,6vw,84px); display:grid; grid-template-columns:1.2fr .5fr; gap:50px; align-items:end; position:relative; overflow:hidden; }
-.contact-card::after { content:""; position:absolute; width:420px; height:420px; border:1px solid rgba(246,237,223,.14); border-radius:50%; right:-120px; top:-120px; box-shadow:0 0 0 80px rgba(246,237,223,.035),0 0 0 160px rgba(246,237,223,.025); }
-.availability { font-size:10px; text-transform:uppercase; letter-spacing:.13em; }
-.availability i { display:inline-block; width:8px; height:8px; border-radius:50%; background:#ee7257; margin-right:8px; box-shadow:0 0 0 5px #ee72572c; }
-.contact-copy h2 { font-family:var(--serif); font-size:clamp(45px,6vw,88px); line-height:.92; max-width:950px; letter-spacing:-.05em; margin:30px 0; }
-.contact-copy p { color:rgba(246,237,223,.7); max-width:580px; line-height:1.6; }
-.contact-actions { position:relative; z-index:2; }
-.btn-cream { background:var(--cream); color:var(--maroon); width:100%; }
-.contact-actions p { font-size:9px; line-height:1.4; opacity:.55; text-align:center; margin-top:12px; }
-.contact-signoff { position:absolute; right:5%; top:11%; font-family:var(--serif); font-style:italic; font-size:32px; transform:rotate(-8deg); opacity:.75; }
-.contact-signoff span { color:var(--spice); }
-footer { min-height:120px; display:grid; grid-template-columns:1fr 1fr 1fr; align-items:center; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); }
-footer p:nth-child(2) { text-align:center; }
-footer p:last-child { text-align:right; }
-.footer-mark { text-transform:none; letter-spacing:0; color:var(--ink); }
-
-.case-modal[hidden] { display:none; }
-.case-modal { position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:20px; }
-.modal-backdrop { position:absolute; inset:0; background:rgba(31,9,12,.83); backdrop-filter:blur(8px); }
-.modal-panel { position:relative; background:var(--cream); width:min(900px,100%); max-height:90vh; overflow:auto; padding:clamp(28px,5vw,65px); box-shadow:0 35px 90px rgba(0,0,0,.35); }
-.modal-close { position:absolute; right:22px; top:18px; border:1px solid var(--line); background:transparent; width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:22px; }
-.modal-panel>.micro { color:var(--spice); }
-.modal-panel>h2 { color:var(--maroon); font-family:var(--serif); font-size:clamp(43px,6vw,72px); margin:12px 0; line-height:1; }
-.modal-thesis { max-width:700px; color:var(--muted); font-size:17px; line-height:1.55; }
-.modal-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:35px 0; }
-.modal-flow>div { padding:28px 22px 28px 0; margin-right:22px; border-right:1px solid var(--line); }
-.modal-flow>div:last-child { border:0; }
-.modal-flow span,.modal-proof span { color:var(--spice); font-size:9px; text-transform:uppercase; letter-spacing:.13em; font-weight:700; }
-.modal-flow h3 { font-family:var(--serif); color:var(--maroon); font-size:24px; margin:14px 0 10px; }
-.modal-flow p,.modal-proof p { color:var(--muted); font-size:13px; line-height:1.55; }
-.modal-proof { background:#ead9c5; padding:20px 24px; margin-bottom:28px; }
-.modal-meaning { background:transparent; border-left:3px solid var(--spice); padding:4px 0 4px 20px; }
-.toast { position:fixed; left:50%; bottom:28px; z-index:120; transform:translate(-50%,30px); background:var(--ink); color:var(--cream); padding:13px 18px; border-radius:99px; font-size:11px; opacity:0; pointer-events:none; transition:.25s; white-space:nowrap; }
-.toast.show { opacity:1; transform:translate(-50%,0); }
-body.modal-open { overflow:hidden; }
-.reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
-.reveal.visible { opacity:1; transform:none; }
-
-@media (max-width: 980px) {
-  .nav-shell nav { display:none; }
-  .hero-grid { grid-template-columns:1fr; }
-  .hero-copy { padding-bottom:20px; }
-  .hero-art { height:540px; }
-  .hero-art::before { width:min(70vw,480px); }
-  .about-block { grid-template-columns:minmax(240px,.75fr) 1.25fr; gap:48px; }
-  .section-heading { grid-template-columns:.35fr 1fr; }
-  .section-heading>p { grid-column:2; }
-  .service-tabs { padding-left:0; }
-  .service-stage { grid-template-columns:.18fr 1fr 1fr; }
-  .round-arrow { display:none; }
-  .process-grid { grid-template-columns:repeat(2,1fr); }
-  .process-grid article:nth-child(2) { border-right:0; }
-  .process-grid article:nth-child(-n+2) { border-bottom:1px solid var(--line); }
-  .ticket-grid { grid-template-columns:1fr 1fr; }
-  .ticket-anchor { transform:none; grid-column:span 2; }
-  .contact-card { grid-template-columns:1fr; }
-  .contact-actions { max-width:360px; }
+.glass:hover{
+  border-color:var(--red-line);
+  box-shadow:0 0 0 1px rgba(158,18,48,.12),0 18px 60px -28px rgba(158,18,48,.55),inset 0 0 44px -22px rgba(231,178,156,.5);
+  transform:translateY(-3px);
 }
 
-@media (max-width: 700px) {
-  .section-pad { padding-left:18px; padding-right:18px; }
-  .nav-shell { height:64px; padding:0 18px; }
-  .nav-cta { padding:10px 12px; font-size:10px; }
-  .nav-cta span { display:none; }
-  .eyebrow span:last-child { display:none; }
-  .hero-grid { min-height:auto; gap:0; }
-  .hero-copy { padding:52px 0 10px; }
-  h1 { font-size:clamp(49px,15vw,70px); }
-  .hero-lede { font-size:16px; }
-  .hero-art { height:450px; }
-  .hero-art::before { width:78vw; box-shadow:18px 19px 0 var(--spice); }
-  .card-main { min-width:260px; width:72%; padding:23px; }
-  .card-main strong { font-size:22px; }
-  .card-note { left:-2%; }
-  .card-note-two { right:-2%; }
-  .scribble { display:none; }
-  .seal { left:4%; bottom:5%; }
-  .marquee { width:calc(100% + 36px); margin-left:-18px; }
-  .about-block { grid-template-columns:1fr; padding:85px 0 15px; gap:48px; }
-  .about-photo-wrap { width:85%; margin:0 auto; }
-  .about-copy h2 { font-size:48px; }
-  .about-copy>p:not(.micro) { font-size:16px; }
-  .about-mark { font-size:220px; bottom:-30px; }
-  .services-block { padding:90px 0; }
-  .section-heading { grid-template-columns:1fr; gap:18px; }
-  .section-heading>p { grid-column:auto; }
-  .section-heading h2 { font-size:43px; }
-  .service-tabs { overflow:auto; margin-top:46px; padding-bottom:5px; }
-  .service-stage { grid-template-columns:1fr; gap:12px; padding:30px 0; }
-  .service-index { font-size:30px; }
-  .work { padding-top:90px; padding-bottom:95px; }
-  .filters { margin-top:45px; flex-wrap:nowrap; overflow:auto; padding-bottom:5px; }
-  .filter { white-space:nowrap; }
-  .case-grid { grid-template-columns:1fr; }
-  .case-card,.case-card.feature,.case-card.wide { grid-column:span 1; grid-template-columns:1fr; grid-template-rows:330px auto; min-height:620px; }
-  .asset-board { padding:12px; }
-  .courtside-board { padding:10px; }
-  .feed-grid { gap:5px; }
-  .product-visual { padding:12px; gap:8px; }
-  .case-copy { padding:25px; }
-  .case-copy h3 { font-size:41px; }
-  .lumen-word { font-size:54px; }
-  .inquiry { padding-top:90px; }
-  .process-grid { grid-template-columns:1fr; margin:52px 0 85px; }
-  .process-grid article { border-right:0; border-bottom:1px solid var(--line); }
-  .process-grid article:nth-child(3) { border-bottom:1px solid var(--line); }
-  .process-grid h3 { margin-top:22px; }
-  .ticket-grid { grid-template-columns:1fr; }
-  .ticket-anchor { grid-column:auto; }
-  .ladder-flow { text-align:left; }
-  .contact-card { min-height:600px; padding:42px 25px; align-content:center; }
-  .contact-copy h2 { font-size:49px; }
-  .contact-signoff { display:none; }
-  footer { grid-template-columns:1fr; gap:16px; padding:34px 0; text-align:center; }
-  footer p:nth-child(2),footer p:last-child { text-align:center; margin:0; }
-  .footer-mark { justify-content:center; }
-  .modal-flow { grid-template-columns:1fr; }
-  .modal-flow>div { border-right:0; border-bottom:1px solid var(--line); margin:0; padding-right:0; }
-  .modal-flow>div:last-child { border-bottom:0; }
-  .toast { max-width:calc(100% - 28px); white-space:normal; text-align:center; }
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;
+  font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.01em;
+  padding:13px 22px;border-radius:999px;text-decoration:none;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;
+}
+.btn-solid{background:var(--red);color:#fff;box-shadow:0 10px 34px -16px rgba(158,18,48,.9)}
+.btn-solid:hover{background:var(--red-bright);transform:translateY(-2px);box-shadow:0 16px 44px -14px rgba(231,178,156,.85)}
+.btn-ghost{border:1px solid var(--red-line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--red-bright);transform:translateY(-2px);box-shadow:0 0 34px -12px rgba(231,178,156,.6)}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+  background:rgba(22,7,11,.82);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav-in{display:flex;align-items:center;gap:20px;min-height:62px;flex-wrap:wrap;padding-block:10px}
+.brand{font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:9px}
+.brand i{width:7px;height:7px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 12px 2px rgba(231,178,156,.8);font-style:normal}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.nav-links a{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:999px;transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:#fff;background:rgba(158,18,48,.16)}
+.nav .btn{padding:10px 18px;font-size:14px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,96px) clamp(64px,9vw,110px)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr)}
+.hero-copy{position:relative;z-index:2;max-width:880px}
+.hero h1{font-size:clamp(42px,7.4vw,86px);font-weight:400;margin:20px 0 26px}
+.hero h1 em{font-style:normal;color:var(--red-bright);text-shadow:0 0 38px rgba(231,178,156,.45)}
+.hero .sub{font-size:clamp(17px,2vw,20px);color:var(--text);max-width:34ch;margin-bottom:14px}
+.hero .sub b{color:var(--red-bright);font-weight:600}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim);flex-wrap:wrap}
+.hero-stat b{color:var(--text);font-weight:500}
+.art-tint{
+  position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;
+  background:linear-gradient(205deg,rgba(158,18,48,.42),transparent 52%,rgba(231,178,156,.26));
+}
+.art-vignette{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(118% 86% at 54% 34%,transparent 38%,rgba(22,7,11,.72) 100%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
-  .reveal { opacity:1; transform:none; }
+/* ---------- thesis / marquee ---------- */
+.thesis-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{padding:clamp(22px,2.6vw,32px)}
+.c-6{grid-column:span 6}.c-5{grid-column:span 5}.c-4{grid-column:span 4}.c-7{grid-column:span 7}.c-3{grid-column:span 3}.c-8{grid-column:span 8}.c-12{grid-column:span 12}
+.step-n{font-family:var(--mono);font-size:12px;color:var(--red-bright);letter-spacing:.14em;display:block;margin-bottom:10px}
+.quote-card{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(150deg,rgba(158,18,48,.14),rgba(22,7,11,.6))}
+.quote-card p{font-family:var(--display);font-weight:600;font-size:clamp(19px,2.2vw,26px);line-height:1.12;letter-spacing:-.02em}
+.marquee{margin-top:40px;overflow:hidden;border-block:1px solid rgba(255,255,255,.07);padding-block:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee ul{display:flex;gap:34px;width:max-content;font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.marquee li{display:flex;align-items:center;gap:34px;white-space:nowrap}
+.marquee li::after{content:"✦";color:var(--red-bright)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:center}
+.portrait{
+  position:relative;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--red-line);
+  background:radial-gradient(100% 80% at 50% 10%,rgba(158,18,48,.2),transparent 60%),linear-gradient(160deg,#2E0F18,#16070B);
+  display:flex;align-items:flex-end;
+}
+.portrait img{
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  object-fit:cover;object-position:52% 12%;
+  filter:contrast(1.05) saturate(.96) brightness(.92);
+}
+.portrait::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(to top,rgba(22,7,11,.92) 0%,rgba(22,7,11,.42) 26%,transparent 52%);
+}
+.portrait span{position:relative;z-index:4;margin:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
+.pull{border-left:2px solid var(--red);padding-left:18px;margin-top:26px;font-family:var(--display);font-weight:600;font-size:clamp(17px,2vw,21px);line-height:1.25;color:var(--text)}
+
+/* ---------- services tabs ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tab{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:var(--muted);
+  transition:.25s ease;
+}
+.tab[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 30px -10px rgba(231,178,156,.8)}
+.tab:hover{color:#fff;border-color:var(--red-line)}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3vw,44px);padding:clamp(26px,3.4vw,44px)}
+.panel h3{margin:12px 0 14px}
+.panel ul.ticks{display:grid;gap:12px;align-content:start}
+.panel ul.ticks li{display:flex;gap:12px;color:var(--muted);font-size:15.5px;line-height:1.45}
+.panel ul.ticks li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 9px 1px rgba(231,178,156,.7)}
+
+/* ---------- work ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filter{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:var(--muted);transition:.25s}
+.filter[aria-pressed="true"]{border-color:var(--red);color:#fff;background:rgba(158,18,48,.18)}
+.filter:hover{color:#fff}
+.filter b{color:var(--red-bright);font-weight:500;margin-left:6px}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.work-card{padding:26px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.work-card .idx{position:absolute;top:18px;right:22px;font-family:var(--display);font-weight:400;font-size:44px;color:rgba(158,18,48,.22);letter-spacing:-.04em}
+.work-card h3{font-size:26px;font-weight:400}
+.work-card p{color:var(--muted);font-size:15px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--red-line-soft);color:var(--muted)}
+.link{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--red-bright);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- process ---------- */
+.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;counter-reset:s}
+.proc .card{position:relative}
+.proc h4{font-size:20px;font-weight:400;margin:10px 0 10px}
+.proc p{color:var(--muted);font-size:15px}
+
+/* ---------- offers ---------- */
+.path{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+.path span b{color:var(--red-bright);font-weight:500;margin-right:6px}
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:18px}
+.offer{padding:28px;display:flex;flex-direction:column;gap:14px}
+.offer .kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-bright)}
+.offer h4{font-size:22px;font-weight:400;line-height:1.1}
+.offer .claim{color:var(--text);font-size:15.5px}
+.offer .note{color:var(--dim);font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;margin-top:auto}
+.offer ul.ticks{display:grid;gap:9px}
+.offer ul.ticks li{display:flex;gap:10px;color:var(--muted);font-size:14.5px;line-height:1.4}
+.offer ul.ticks li::before{content:"";flex:none;width:5px;height:5px;margin-top:8px;border-radius:50%;background:var(--red)}
+.most{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-top:24px;text-align:center}
+
+/* ---------- playbook ---------- */
+.plat{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.plat-card{padding:24px;display:flex;flex-direction:column;gap:14px}
+.plat-card .visual{
+  position:relative;aspect-ratio:16/9;border-radius:var(--r-sm);overflow:hidden;
+  border:1px solid var(--red-line);
+  background:url("social-texture.jpg") center/160% no-repeat,linear-gradient(150deg,rgba(158,18,48,.12),rgba(22,7,11,.5));
+  display:flex;align-items:center;justify-content:center;
+}
+.plat .plat-card:nth-child(2n) .visual{background-position:32% 68%}
+.plat .plat-card:nth-child(3n) .visual{background-position:74% 24%}
+.plat .plat-card:nth-child(4n) .visual{background-position:18% 22%}
+.plat .plat-card:nth-child(5n) .visual{background-position:60% 80%}
+.plat-card .visual::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 70% at 50% 50%,rgba(22,7,11,.5),rgba(22,7,11,.72));
+}
+.plat-card .badge{
+  position:relative;isolation:isolate;z-index:2;width:68px;height:68px;border-radius:20%;overflow:hidden;
+  border:1px solid rgba(231,178,156,.45);
+  box-shadow:0 14px 30px -14px rgba(0,0,0,.95);
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+.plat-card .badge img{width:100%;height:100%;object-fit:cover;display:block}
+.plat-card:hover .badge{transform:translateY(-3px) scale(1.04);border-color:var(--red-bright);box-shadow:0 16px 36px -14px rgba(231,178,156,.8)}
+.plat-card h4{font-size:21px;font-weight:400}
+.plat-card .way{color:var(--text);font-size:15px}
+.plat-card .way b{color:var(--red-bright);font-weight:500}
+.plat-card ul{display:grid;gap:9px}
+.plat-card li{display:flex;gap:10px;color:var(--muted);font-size:14.5px;line-height:1.45}
+.plat-card li::before{content:"";flex:none;width:5px;height:5px;margin-top:8px;border-radius:50%;background:var(--red)}
+
+/* ---------- data ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+.kpi{padding:20px 22px;display:grid;gap:4px}
+.kpi .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.kpi .v{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:13px;color:var(--dim)}
+.data-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.bars{display:grid;gap:14px;margin-top:18px}
+.bar-row{display:grid;grid-template-columns:62px 1fr 46px;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bar{display:block;height:12px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--red),var(--red-bright));box-shadow:0 0 16px -2px rgba(231,178,156,.8)}
+.bar-row .n{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.steps li{display:block}
+.tbl-wrap{overflow-x:auto;margin-top:16px}
+table{border-collapse:collapse;width:100%;min-width:430px;font-size:14px}
+th,td{text-align:right;padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.08);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:400}
+td{color:var(--muted)}
+td:first-child{color:var(--text)}
+.footnote{font-size:13px;color:var(--dim);margin-top:14px;max-width:70ch}
+.flag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-bright);border:1px solid var(--red-line);padding:6px 12px;border-radius:999px}
+
+/* ---------- social tiles ---------- */
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.social-block{display:grid;gap:12px;justify-items:start}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.social a,.social span.tile{
+  position:relative;display:block;width:52px;height:52px;flex:none;
+  border-radius:20%;overflow:hidden;border:1px solid rgba(231,178,156,.32);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.social img{width:100%;height:100%;object-fit:cover;display:block}
+.social a::after,.social span.tile::after{
+  content:"";position:absolute;inset:0;background:rgba(22,7,11,.18);transition:background .3s ease;
+}
+.social a:hover,.social a:focus-visible{
+  transform:translateY(-4px);border-color:var(--red-bright);
+  box-shadow:0 14px 32px -14px rgba(231,178,156,.9),0 0 24px -6px rgba(231,178,156,.65);
+}
+.social a:hover::after,.social a:focus-visible::after{background:rgba(22,7,11,.08)}
+.social span.tile{opacity:.45;border-style:dashed}
+@media (max-width:520px){ .social a,.social span.tile{width:44px;height:44px} }
+
+/* ---------- inquiry + footer ---------- */
+.inq{text-align:center;display:grid;justify-items:center;gap:20px}
+.inq h2{max-width:18ch}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 12px 3px rgba(231,178,156,.8)}
+.avail{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+footer{border-top:1px solid rgba(255,255,255,.07);padding-block:44px 52px}
+.foot-grid{display:flex;gap:26px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+.foot-grid p,.foot-grid a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{text-decoration:none}
+.foot-links a:hover{color:var(--red-bright)}
+
+@media (max-width:900px){
+  .hero-grid,.about-grid,.panel,.data-grid{grid-template-columns:1fr}
+  .hero-grid{gap:34px}
+  .thesis-grid > *{grid-column:span 12 !important}
+  .nav-links{order:3;margin-left:0;width:100%}
+  .nav .btn{margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition-duration:.01ms !important}
 }
 
+/* ================= wine & rose-gold theme layer ================= */
+/* serif display is a single-weight face: never let the browser fake bold */
+h1,h2,h3,h4,.brand,.quote-card p,.pull,.kpi .v,.work-card .idx{font-weight:400}
+h1,h2,h3,h4{letter-spacing:-.01em;line-height:.98}
+h2.big{font-size:clamp(42px,6.6vw,88px)}
+h3.mid{font-size:clamp(30px,3.6vw,44px)}
+.hero h1{font-size:clamp(52px,8.6vw,118px);margin:22px 0 28px}
+.hero h1 em,h2 .rd{
+  font-style:italic;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;
+  color:transparent;text-shadow:none;filter:drop-shadow(0 0 26px rgba(231,178,156,.22));
+}
+.rd{font-style:italic}
+.hero .sub b{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.28em;letter-spacing:0;color:var(--red-bright)}
+.eyebrow,.hero-stat{letter-spacing:.24em}
+.brand{font-size:24px;letter-spacing:0}
+.work-card h3{font-size:34px}
+.proc h4,.offer h4,.plat-card h4{font-size:28px;line-height:1.02}
+.kpi .v{font-size:clamp(38px,4.4vw,54px);letter-spacing:0}
+.quote-card p{font-style:italic;font-size:clamp(26px,2.8vw,34px);line-height:1.05;letter-spacing:0}
+.pull{font-style:italic;font-size:clamp(22px,2.4vw,28px);line-height:1.15;border-left-color:var(--red-bright)}
+.work-card .idx{font-style:italic;font-size:64px;line-height:1;color:rgba(231,178,156,.30);letter-spacing:0;top:14px}
+.proc .step-n{font-family:var(--display);font-style:italic;font-size:56px;line-height:1;letter-spacing:0;margin-bottom:4px}
+
+/* buttons: rose-gold lacquer, and a glassy cherry for "active" states */
+.btn{font-family:var(--body);font-weight:500;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;padding:15px 26px}
+.btn-solid{
+  color:var(--wine-ink);background:linear-gradient(135deg,#F7D9CB 0%,#E3A58C 45%,#F4CDBB 72%,#D8957B 100%);
+  background-size:180% 100%;background-position:0% 0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 12px 32px -16px rgba(231,178,156,.75);
+  transition:background-position .6s ease,transform .25s ease,box-shadow .25s ease;
+}
+.btn-solid:hover{background:linear-gradient(135deg,#F7D9CB 0%,#E3A58C 45%,#F4CDBB 72%,#D8957B 100%);background-size:180% 100%;background-position:100% 0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 18px 44px -14px rgba(231,178,156,.85)}
+.btn-ghost{border-color:rgba(231,178,156,.45)}
+.nav .btn{padding:11px 20px;font-size:11.5px}
+.tab[aria-selected="true"],.filter[aria-pressed="true"]{
+  color:var(--text);border-color:rgba(231,178,156,.35);
+  background:linear-gradient(180deg,#B8173A 0%,#7A0E24 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.25),0 0 26px -10px rgba(231,178,156,.55);
+}
+.filter[aria-pressed="true"] b{color:var(--blush)}
+.link{font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+
+/* glass: wine-tinted with a lacquer highlight along the top edge */
+.glass{box-shadow:inset 0 1px 0 rgba(255,220,205,.06)}
+
+/* About: arched portrait, like the reference's hero arch */
+.portrait{border-radius:999px 999px var(--r-md) var(--r-md)}
+
+/* featured offer: blush panel */
+.offers .offer:nth-child(2){
+  position:relative;overflow:hidden;isolation:isolate;border-color:transparent;
+  background:linear-gradient(135deg,#F7E0D7 0%,#EBC3B6 30%,#F4D6CB 55%,#E4B3A5 80%,#F2D1C5 100%);
+  background-size:240% 240%;background-position:0% 0%;
+  box-shadow:0 30px 70px -40px rgba(231,178,156,.6);
+}
+.offers .offer:nth-child(2){transition:transform .35s ease}
+.offers .offer:nth-child(2) > *:not(.sheen){position:relative;z-index:1}
+.offer .sheen{
+  position:absolute;top:-30%;bottom:-30%;left:0;width:60%;z-index:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,0) 30%,rgba(255,250,246,.75) 50%,rgba(255,255,255,0) 70%,transparent 100%);
+  mix-blend-mode:soft-light;transform:translateX(-120%) skewX(-12deg);
+}
+.offers .offer:nth-child(2) .kind{color:#7A1A2C}
+.offers .offer:nth-child(2) h4,.offers .offer:nth-child(2) .claim{color:var(--wine-ink)}
+.offers .offer:nth-child(2) ul.ticks li{color:#5A2A32}
+.offers .offer:nth-child(2) ul.ticks li::before{background:#9E1230}
+.offers .offer:nth-child(2) .note{color:#6B3A40;border-top-color:rgba(42,7,16,.14)}
+.offers .offer:nth-child(2) .link{color:#8E1030}
+
+/* `.work-card p` was outranking `.eyebrow` and blowing the label up to body size */
+.work-card .eyebrow{font-size:10.5px;line-height:1.7;padding-right:72px}
+.offers{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){ .offers{grid-template-columns:1fr} }
+
+/* hero seal: rotating type ring, desktop only */
+.seal{position:absolute;right:var(--gutter);bottom:clamp(56px,8vw,96px);width:clamp(150px,15vw,200px);z-index:1;pointer-events:none}
+.seal svg{display:block;width:100%;height:auto;overflow:visible}
+
+/* inquiry: wide panel with the lacquered-cherry arch */
+.inq-panel{
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,64px);align-items:center;
+  padding:clamp(28px,5vw,64px);border-radius:28px;border:1px solid var(--red-line);
+  background:radial-gradient(90% 120% at 100% 50%,rgba(158,18,48,.32),transparent 60%),linear-gradient(160deg,rgba(46,15,24,.78),rgba(22,7,11,.72));
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px 0 rgba(255,220,205,.07),0 40px 100px -60px rgba(158,18,48,.9);
+}
+.inq-copy{display:grid;gap:22px;justify-items:start}
+.inq-copy h2{max-width:14ch}
+.inq-art{
+  justify-self:end;width:min(300px,100%);aspect-ratio:3/4;position:relative;overflow:hidden;
+  border-radius:999px 999px 22px 22px;border:1px solid rgba(231,178,156,.4);
+  box-shadow:0 30px 80px -30px rgba(158,18,48,.9),0 0 0 8px rgba(231,178,156,.05);
+}
+.inq-art img{position:absolute;inset:-6%;width:112%;height:112%;max-width:none;object-fit:cover;object-position:50% 40%;display:block}
+.inq-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(22,7,11,.55));pointer-events:none}
+
+.inq-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.copy-mail{
+  display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 8px 0 20px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(231,178,156,.4);background:rgba(22,7,11,.4);color:var(--text);
+  font-family:var(--body);font-size:14.5px;letter-spacing:.02em;
+  transition:border-color .25s ease,background .25s ease;
+}
+.copy-mail:hover,.copy-mail:focus-visible{border-color:var(--red-bright);background:rgba(158,18,48,.25)}
+.copy-lbl{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine-ink);
+  background:var(--blush);border-radius:999px;padding:8px 14px;
+}
+.copy-mail.copied .copy-lbl{background:var(--red-bright)}
+
+@media (max-width:900px){
+  .nav{position:relative;top:auto}   /* the wrapped phone nav is ~210px tall; sticky, it covered a quarter of the screen */
+  .seal{display:none}
+  .inq-panel{grid-template-columns:1fr}
+  .inq-art{justify-self:center;width:min(240px,80%);order:-1}
+}
 </style>
-  <style>.extra-page{max-width:1440px;margin:auto;padding:60px clamp(20px,5vw,76px) 90px}.extra-page[hidden]{display:none}.extra-page .page-top{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;font-size:11px;letter-spacing:.08em}.extra-page .page-heading{max-width:850px;margin:65px 0 45px}.extra-page h1{font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:-.045em}.extra-page h1 em{color:var(--maroon)}.extra-page .intro{max-width:630px;line-height:1.7;color:var(--muted)}.extra-page .micro{color:var(--maroon)}.phone-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}.reel-card{min-width:0}.phone{position:relative;border:7px solid #261a19;border-radius:34px;background:#261a19;padding:3px;box-shadow:0 18px 28px #45101820}.phone-screen{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:linear-gradient(150deg,#862939,#451018);color:var(--cream);display:flex;align-items:center;justify-content:center}.reel-card:nth-child(2) .phone-screen{background:linear-gradient(140deg,#f0d9bd,#ccad8d);color:var(--maroon)}.reel-card:nth-child(3) .phone-screen{background:linear-gradient(140deg,#cb5843,#8d2e30)}.reel-card:nth-child(4) .phone-screen{background:linear-gradient(140deg,#71534a,#392923)}.phone-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);height:16px;width:38%;border-radius:20px;background:#211b1b;z-index:2;pointer-events:none}.reel-slot{text-align:center;padding:18px}.reel-slot strong{font:italic 52px var(--serif);display:block;margin-bottom:20px}.reel-slot span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block}.reel-slot small{display:block;margin-top:9px;opacity:.75;font-size:10px}.phone-screen video,.phone-screen img{width:100%;height:100%;object-fit:contain;background:#211b1b;position:absolute;inset:0}.reel-card h2{font:26px var(--serif);color:var(--maroon);margin:23px 0 10px}.reel-card p{font-size:13px;color:var(--muted);line-height:1.6}.upload-label{display:block;border:1px solid var(--line);padding:12px;border-radius:7px;font-size:11px;text-align:center;cursor:pointer}.upload-label input{display:block;width:100%;font-size:10px;margin-top:8px}.page-note{border-top:1px solid var(--line);margin-top:48px;padding-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.demo-label{display:inline-block;background:var(--maroon);color:var(--cream);padding:9px 14px;border-radius:30px;font-size:10px;letter-spacing:.09em;text-transform:uppercase}.data-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:34px 0}.data-kpi{border:1px solid var(--line);padding:24px;background:#efe1ce}.data-kpi span{font-size:10px;letter-spacing:.1em;text-transform:uppercase}.data-kpi strong{display:block;font:44px var(--serif);color:var(--maroon);margin:16px 0 9px}.data-kpi small{color:var(--muted);font-size:11px}.report-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:25px}.report-panel{border:1px solid var(--line);padding:30px;background:#fff9ef}.report-panel h2{font:29px var(--serif);color:var(--maroon);margin:0 0 12px}.report-panel p{color:var(--muted);line-height:1.65;font-size:13px}.metric-row{display:grid;grid-template-columns:64px 1fr 50px;align-items:center;gap:12px;margin:22px 0;font-size:12px}.metric-track{height:22px;background:#ead9c5}.metric-fill{height:100%;background:var(--maroon)}.report-panel .takeaway{border-left:3px solid var(--spice);padding-left:16px;margin-top:25px}.table-scroll{overflow:auto;margin-top:28px}.data-table{border-collapse:collapse;width:100%;font-size:13px;text-align:left;min-width:520px}.data-table th,.data-table td{padding:16px 12px;border-bottom:1px solid var(--line)}.data-table th{color:var(--maroon);background:#ead9c5}.data-table caption{text-align:left;font:27px var(--serif);color:var(--maroon);padding-bottom:20px}.page-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:40px}.extra-page a:focus-visible,.extra-page input:focus-visible{outline:3px solid var(--spice);outline-offset:5px}.playbook-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.platform-card{background:#fffaf2;border:1px solid var(--line);display:flex;flex-direction:column}.platform-visual{aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:20px;color:rgba(246,237,223,.85);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.platform-visual[data-tone="1"]{background:linear-gradient(150deg,#451018,#721f2c)}.platform-visual[data-tone="2"]{background:linear-gradient(150deg,#2a4a6b,#3d6690)}.platform-visual[data-tone="3"]{background:linear-gradient(150deg,#1f3a52,#2d5578)}.platform-visual[data-tone="4"]{background:linear-gradient(150deg,#b1223d,#df4c38)}.platform-visual[data-tone="5"]{background:linear-gradient(150deg,#5c1414,#8c231f)}.platform-visual[data-tone="6"]{background:linear-gradient(150deg,#1a1a1a,#3a2b2b)}.platform-visual[data-tone="7"]{background:linear-gradient(150deg,#5a2b10,#8c4a1f)}.platform-visual[data-tone="8"]{background:linear-gradient(150deg,#7a1f2f,#b1223d)}.platform-body{padding:22px;display:flex;flex-direction:column;flex:1}.platform-tag{font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--spice)}.platform-card h3{font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.3;color:var(--maroon);margin:12px 0 14px}.platform-card h3 em{font-style:italic}.platform-list{list-style:none;padding:0;margin:0 0 18px;font-size:11.5px;color:var(--muted)}.platform-list li{padding:7px 0;border-bottom:1px solid var(--line)}.platform-cta{margin-top:auto;border:0;background:transparent;border-bottom:1px solid var(--maroon);color:var(--maroon);font-weight:700;font-size:12px;padding:8px 0;cursor:pointer;align-self:flex-start}.platform-cta span{margin-left:8px}#platform-modal[hidden]{display:none}#platform-modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px}@media(max-width:1000px){.phone-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;max-width:750px;margin:auto}.report-grid{grid-template-columns:1fr}.data-kpis{grid-template-columns:repeat(2,1fr)}.playbook-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.phone-grid{gap:24px 12px}.phone{border-width:4px;border-radius:24px;padding:2px}.phone-screen{border-radius:18px}.phone-island{height:10px;top:7px}.reel-slot{padding:10px}.reel-slot strong{font-size:36px}.reel-slot span{font-size:9px}.reel-card h2{font-size:22px}.data-kpi{padding:18px}.data-kpi strong{font-size:34px}.report-panel{padding:20px}.extra-page .page-heading{margin-top:42px}.playbook-grid{grid-template-columns:1fr}}
-</style></head>
-  <body>
-    <div class="grain" aria-hidden="true"></div>
-    <header class="nav-shell">
-      <a class="wordmark" href="#top" aria-label="Kim Creative home">
-        <span class="wordmark-dot"></span>Kim Creative
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a><a href="#reels-showcase">Reels</a><a href="#platform-playbook">Playbook</a><a href="#sample-data">Data</a>
-        <a href="#inquiry">Inquiry</a>
-      </nav>
-      <button class="nav-cta" data-scroll="inquiry">Start a conversation <span>↗</span></button>
-    </header>
+</head>
+<body>
+<div class="smoke" aria-hidden="true">
+  <div class="smoke-layer" id="smokeA"></div>
+  <div class="smoke-layer smoke-b" id="smokeB"></div>
+</div>
 
-    <main id="top">
-      <section class="hero section-pad" aria-labelledby="hero-title">
-        <div class="eyebrow reveal"><span>Independent creative strategist</span><span>Tarlac · working remotely</span></div>
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <p class="kicker">Strategy people understand.<br />Creative they can <em>feel.</em></p>
-            <h1 id="hero-title">I turn what makes your business <span>worth choosing</span> into content built to move.</h1>
-            <p class="hero-lede">For founders and growing brands who are done with random posting—but still want their marketing to sound unmistakably human.</p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" data-scroll="work">Explore selected work <span>↓</span></button>
-              <button class="text-link" data-scroll="inquiry">Tell me what you're building <span>↗</span></button>
-            </div>
-            <p class="hero-trust">3 years turning positioning into content · 50+ brands guided</p>
-          </div>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><i></i>Kim Creative</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#platform-playbook">Playbook</a>
+      <a href="#sample-data">Data</a>
+      <a href="#inquiry">Inquiry</a>
+    </nav>
+    <a class="btn btn-solid" href="#inquiry">Start a conversation ↗</a>
+  </div>
+</header>
 
-          <div class="hero-art reveal" aria-label="Kim Creative strategy board illustration">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="strategy-card card-main">
-              <span class="micro">The work behind the work</span>
-              <strong>Positioning → Story → Action</strong>
-              <div class="signal-line"><i></i><i></i><i></i><i></i><i></i></div>
-              <p>Every asset has a job. Every message earns its place.</p>
-            </div>
-            <div class="strategy-card card-note"><span>01</span> Find the tension</div>
-            <div class="strategy-card card-note card-note-two"><span>02</span> Build the angle</div>
-            <div class="scribble">not content<br />for content's sake</div>
-            <div class="seal"><span>KC</span><small>STRATEGY<br />WITH PULSE</small></div>
-          </div>
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Independent creative strategist · Tarlac · Working remotely</p>
+      <h1>Strategy people understand.<br><em>Creative they can feel.</em></h1>
+      <p class="sub">I turn what makes your business <b>worth choosing</b> into content built to move.</p>
+      <p class="lede">For founders and growing brands who are done with random posting—but still want their marketing to sound unmistakably human.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#work">Explore selected work ↓</a>
+        <a class="btn btn-ghost" href="#inquiry">Tell me what you're building ↗</a>
+      </div>
+      <p class="hero-stat"><b>3 years</b> turning positioning into content <span class="rd">·</span> <b>50+ brands</b> guided</p>
+    </div>
+  </div>
+  <div class="seal" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <defs><path id="sealPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+      <circle cx="100" cy="100" r="97" fill="none" stroke="rgba(231,178,156,.38)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(231,178,156,.24)" stroke-width="1"/>
+      <g id="sealRing">
+        <text fill="#E7B29C" font-family="Jost, Futura, sans-serif" font-size="12.5" font-weight="500" letter-spacing="3">
+          <textPath href="#sealPath" textLength="486" lengthAdjust="spacing">STRATEGY WITH PULSE ✦ KIM CREATIVE ✦ </textPath>
+        </text>
+      </g>
+      <text x="100" y="118" text-anchor="middle" fill="#E7B29C" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="56">K</text>
+    </svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The work behind the work</p>
+      <h2 class="big">Positioning <span class="rd">→</span> Story <span class="rd">→</span> Action</h2>
+      <p class="lede">Every asset has a job. Every message earns its place.</p>
+    </div>
+    <div class="thesis-grid">
+      <article class="glass card c-4">
+        <span class="step-n">01</span>
+        <h3 class="mid">Find the tension</h3>
+      </article>
+      <article class="glass card c-4">
+        <span class="step-n">02</span>
+        <h3 class="mid">Build the angle</h3>
+      </article>
+      <article class="glass card c-4 quote-card">
+        <p>Not content for<br>content's sake.</p>
+      </article>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <ul>
+        <li>Creative strategy</li><li>Content systems</li><li>Conversion copy</li><li>Paid social</li><li>Voice of customer</li>
+        <li>Creative strategy</li><li>Content systems</li><li>Conversion copy</li><li>Paid social</li><li>Voice of customer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="portrait" id="portrait">
+      <img id="portraitPhoto" src="kim-hero.jpg" alt="Kim, in a crimson printed headscarf and sunglasses, leaning against a stool outside a brick-fronted cafe.">
+      <div class="art-tint"></div>
+      <div class="art-vignette"></div>
+      <span>Kim · Creative strategist</span>
+    </div>
+    <div>
+      <p class="eyebrow">The person behind the strategy</p>
+      <h2 class="big" style="margin:16px 0 22px">I make the message <em class="rd">make sense.</em></h2>
+      <p class="lede">I'm Kim, a creative and social media strategist who turns business insight into content people understand, feel, and act on. I work across positioning, creative direction, and conversion copy—building systems with clarity before noise.</p>
+      <p class="pull">Strategic enough to build the framework. Creative enough to break it.</p>
+      <div class="social-block" style="margin-top:28px">
+        <p class="eyebrow">Find me on</p>
+        <div class="social">
+          <a href="https://www.instagram.com/kimsangcap_creativealchemist/" target="_blank" rel="noopener noreferrer"><img src="social-instagram.jpg" alt=""><span class="vh">Instagram</span></a>
+          <span class="tile" title="Facebook link not added yet"><img src="social-facebook.jpg" alt=""><span class="vh">Facebook — link not added yet</span></span>
+          <a href="https://www.tiktok.com/@alkimmycreatives" target="_blank" rel="noopener noreferrer"><img src="social-tiktok.jpg" alt=""><span class="vh">TikTok</span></a>
+          <span class="tile" title="YouTube link not added yet"><img src="social-youtube.jpg" alt=""><span class="vh">YouTube — link not added yet</span></span>
+          <span class="tile" title="Pinterest link not added yet"><img src="social-pinterest.jpg" alt=""><span class="vh">Pinterest — link not added yet</span></span>
         </div>
-
-        <div class="marquee" aria-label="Services overview">
-          <div class="marquee-track">
-            <span>Creative strategy</span><i>✦</i><span>Content systems</span><i>✦</i><span>Conversion copy</span><i>✦</i><span>Paid social</span><i>✦</i><span>Voice of customer</span><i>✦</i>
-            <span aria-hidden="true">Creative strategy</span><i aria-hidden="true">✦</i><span aria-hidden="true">Content systems</span><i aria-hidden="true">✦</i><span aria-hidden="true">Conversion copy</span><i aria-hidden="true">✦</i>
-          </div>
-        </div>
-
-        <div id="about" class="about-block reveal">
-          <div class="about-photo-wrap">
-            <img src="image-01.jpg" alt="Kim, creative and social media strategist" class="about-photo" />
-            <span class="about-photo-label">Kim · Creative strategist</span>
-          </div>
-          <div class="about-copy">
-            <p class="micro">The person behind the strategy</p>
-            <h2>I make the message <em>make sense.</em></h2>
-            <p>I’m Kim, a creative and social media strategist who turns business insight into content people understand, feel, and act on. I work across positioning, creative direction, and conversion copy—building systems with clarity before noise.</p>
-            <strong>Strategic enough to build the framework. Creative enough to break it.</strong>
-          </div>
-          <div class="about-mark" aria-hidden="true">K</div>
-        </div>
-
-        <div id="services" class="services-block reveal">
-          <div class="section-heading">
-            <div><span class="number">01</span><span class="label">Ways to work together</span></div>
-            <h2>Not more noise.<br /><em>A sharper reason to care.</em></h2>
-            <p>I build the thinking, language, and creative direction that give your content somewhere meaningful to go.</p>
-          </div>
-
-          <div class="service-tabs" role="tablist" aria-label="Services">
-            <button class="service-tab active" role="tab" aria-selected="true" data-service="strategy">Strategy</button>
-            <button class="service-tab" role="tab" aria-selected="false" data-service="content">Content</button>
-            <button class="service-tab" role="tab" aria-selected="false" data-service="conversion">Conversion</button>
-          </div>
-          <div class="service-stage" aria-live="polite">
-            <div class="service-index">01</div>
-            <div>
-              <p class="micro service-overline">Clarity before output</p>
-              <h3 class="service-title">Brand-to-Content Strategy</h3>
-              <p class="service-description">For brands that have outgrown “just post consistently.” We find the message, audience tension, content roles, and campaign direction before deciding what to make.</p>
-            </div>
-            <ul class="service-list">
-              <li>Positioning & audience research</li>
-              <li>Content pillars with conversion intent</li>
-              <li>Creative testing map</li>
-              <li>90-day strategic direction</li>
-            </ul>
-            <button class="round-arrow" data-scroll="inquiry" aria-label="Ask about this service">↘</button>
-          </div>
-        </div>
-      </section>
-
-      <section id="work" class="work section-pad" aria-labelledby="work-title">
-        <div class="section-heading light reveal">
-          <div><span class="number">02</span><span class="label">Selected concept work</span></div>
-          <h2 id="work-title">The design catches the eye.<br /><em>The thinking holds it.</em></h2>
-          <p>Five self-initiated case studies built to show the strategic decisions behind the surface. No borrowed metrics. No pretend client results.</p>
-        </div>
-
-        <div class="filters reveal" role="group" aria-label="Filter case studies">
-          <button class="filter active" data-filter="all">All work <span>05</span></button>
-          <button class="filter" data-filter="brand">Brand strategy <span>02</span></button>
-          <button class="filter" data-filter="content">Content systems <span>05</span></button>
-          <button class="filter" data-filter="conversion">Conversion <span>04</span></button>
-        </div>
-
-        <div class="case-grid">
-          <article class="case-card feature reveal" data-category="brand content conversion" tabindex="0" data-case="lumen">
-            <div class="case-visual asset-board lumen-board">
-              <span class="concept-tag">Concept study</span>
-              <img src="image-02.jpg" alt="Lumen House leadership brand nine-post content system" />
-            </div>
-            <div class="case-copy">
-              <div class="case-meta"><span>Leadership brand · Positioning</span><span>01</span></div>
-              <h3>Lumen House</h3>
-              <p>Positioned Maya Reyes as the calm, clear alternative to performative leadership—then translated that point of view into a recognizable content and offer system.</p>
-              <div class="case-chips"><span>Founder positioning</span><span>Editorial system</span><span>Offer journey</span></div>
-              <button class="case-open">See the thinking <span>↗</span></button>
-            </div>
-          </article>
-
-          <article class="case-card reveal" data-category="brand content conversion" tabindex="0" data-case="freshspace">
-            <div class="case-visual asset-board freshspace-board">
-              <span class="concept-tag">Concept study</span>
-              <img src="image-03.jpg" alt="Freshspace Cleaning Company nine-post social media content system" />
-            </div>
-            <div class="case-copy">
-              <div class="case-meta"><span>Cleaning service · Trust funnel</span><span>02</span></div>
-              <h3>Freshspace</h3>
-              <p>Turned “we clean spaces” into a clearer promise: cleaner environments that help people live and work better—supported by proof, education, and direct-response content.</p>
-              <div class="case-chips"><span>Message hierarchy</span><span>Trust content</span><span>Lead generation</span></div>
-              <button class="case-open">See the thinking <span>↗</span></button>
-            </div>
-          </article>
-
-          <article class="case-card reveal" data-category="content conversion" tabindex="0" data-case="brightsmile">
-            <div class="case-visual asset-board brightsmile-board">
-              <span class="concept-tag">Concept study</span>
-              <img src="image-04.jpg" alt="BrightSmile Dental Clinic nine-post content and conversion system" />
-            </div>
-            <div class="case-copy">
-              <div class="case-meta"><span>Dental clinic · Patient journey</span><span>03</span></div>
-              <h3>BrightSmile</h3>
-              <p>Built a patient-friendly content mix that moves from reassurance and useful education to treatment proof and low-friction appointment prompts.</p>
-              <div class="case-chips"><span>Patient education</span><span>Proof content</span><span>Booking CTA</span></div>
-              <button class="case-open">See the thinking <span>↗</span></button>
-            </div>
-          </article>
-
-          <article class="case-card reveal" data-category="content" tabindex="0" data-case="courtside">
-            <div class="case-visual courtside-board">
-              <span class="concept-tag">Curated feed study</span>
-              <div class="feed-grid" aria-label="Six-post pickleball and padel social feed">
-                <img src="image-05.jpg" alt="Pickle and Padel brand post: More than a game" />
-                <img src="image-06.jpg" alt="Pickleball lifestyle post: Your new favorite weekend plan" />
-                <img src="image-07.jpg" alt="Padel emergency break-glass creative concept" />
-                <img src="image-08.jpg" alt="Beginner-friendly racquet sport community post" />
-                <img src="image-09.jpg" alt="Racquet sport lifestyle content calendar concept" />
-                <img src="image-10.jpg" alt="One percent better every day racquet sport post" />
-              </div>
-            </div>
-            <div class="case-copy">
-              <div class="case-meta"><span>Sports lifestyle · Social concepts</span><span>04</span></div>
-              <h3>Courtside Social</h3>
-              <p>A six-post feed study exploring how racquet-sport content can balance product desire, beginner energy, community, lifestyle, consistency, and pattern-interrupt creative.</p>
-              <div class="case-chips"><span>Content variety</span><span>Community energy</span><span>Visual system</span></div>
-              <button class="case-open">See the thinking <span>↗</span></button>
-            </div>
-          </article>
-
-          <article class="case-card wide reveal" data-category="content conversion" tabindex="0" data-case="productlab">
-            <div class="case-visual product-visual">
-              <span class="concept-tag">Paid creative studies</span>
-              <img src="image-11.jpg" alt="Playful deodorant product advertisement concept" />
-              <img src="image-12.jpg" alt="Oversized vegan protein product advertisement concept" />
-            </div>
-            <div class="case-copy">
-              <div class="case-meta"><span>Consumer products · Paid creative</span><span>05</span></div>
-              <h3>Product Creative Lab</h3>
-              <p>Two attention-first ad routes that make the product impossible to miss: one built on a familiar emergency-device visual, the other on exaggerated scale and movement.</p>
-              <div class="case-chips"><span>Pattern interrupt</span><span>Product framing</span><span>Paid social</span></div>
-              <button class="case-open">See the thinking <span>↗</span></button>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="inquiry" class="inquiry section-pad" aria-labelledby="inquiry-title">
-        <div class="section-heading reveal">
-          <div><span class="number">03</span><span class="label">From idea to useful system</span></div>
-          <h2 id="inquiry-title">Clear thinking.<br /><em>Then the good stuff.</em></h2>
-          <p>A collaborative process designed to get us out of vague territory quickly—and into work your audience can recognize themselves in.</p>
-        </div>
-
-        <div class="process-grid reveal">
-          <article><span>01</span><h3>Listen closely</h3><p>Business context, customer language, existing signals, and the real friction under the brief.</p></article>
-          <article><span>02</span><h3>Find the angle</h3><p>Positioning, message hierarchy, content roles, and a strategic idea strong enough to hold the work.</p></article>
-          <article><span>03</span><h3>Build the system</h3><p>Concepts, copy, creative direction, and an operating rhythm your brand can keep using.</p></article>
-          <article><span>04</span><h3>Learn & sharpen</h3><p>Review the signal, refine the creative, and make the next decision with better information.</p></article>
-        </div>
-
-        <div class="ticket-ladder reveal">
-          <div class="ladder-heading">
-            <p class="micro">Four ways to start</p>
-            <h3>Not one price. <em>Four ways in.</em></h3>
-            <p>Pick the entry point that matches where you are—from a second opinion to an ongoing strategic partner.</p>
-          </div>
-          <p class="ladder-flow" aria-hidden="true">01 See it clearly <span>→</span> 02 Position it intentionally <span>→</span> 03 Build the foundation <span>→</span> 04 Keep it moving</p>
-          <div class="ticket-grid">
-            <article class="ticket">
-              <div class="ticket-top"><span class="ticket-num">01</span><span class="ticket-tag">Quick</span></div>
-              <h4>Social Presence Audit</h4>
-              <p class="ticket-hook">A second set of eyes on your social presence.</p>
-              <ul class="ticket-list">
-                <li>Profile positioning</li>
-                <li>Content direction</li>
-                <li>Visual consistency</li>
-                <li>Messaging &amp; audience connection</li>
-              </ul>
-              <p class="ticket-deliverable">A concise audit with prioritized recommendations.</p>
-              <button class="ticket-cta" data-scroll="contact">Let's talk <span>↗</span></button>
-            </article>
-            <article class="ticket ticket-anchor">
-              <div class="ticket-top"><span class="ticket-num">02</span><span class="ticket-tag">Core</span></div>
-              <h4>Positioning + Creative Direction</h4>
-              <p class="ticket-hook">Make the brand feel like the business it's becoming.</p>
-              <ul class="ticket-list">
-                <li>Positioning &amp; message clarity</li>
-                <li>Brand voice direction</li>
-                <li>Content pillars &amp; creative territories</li>
-                <li>Visual/content direction</li>
-              </ul>
-              <p class="ticket-deliverable">Not a rebrand—helping an already-built business become more intentional and recognizable in how it shows up.</p>
-              <button class="ticket-cta" data-scroll="contact">Let's talk <span>↗</span></button>
-            </article>
-            <article class="ticket">
-              <div class="ticket-top"><span class="ticket-num">03</span><span class="ticket-tag">Foundation</span></div>
-              <h4>30-Day Strategic Content Plan</h4>
-              <p class="ticket-hook">A month of content with a reason behind it.</p>
-              <ul class="ticket-list">
-                <li>30-day content map with weekly themes</li>
-                <li>Campaign &amp; offer angles</li>
-                <li>Reel concepts, hooks &amp; CTA direction</li>
-                <li>Repurposing opportunities</li>
-              </ul>
-              <p class="ticket-deliverable">You're not buying 30 posts. You're buying 30 days of strategic direction.</p>
-              <button class="ticket-cta" data-scroll="contact">Let's talk <span>↗</span></button>
-            </article>
-            <article class="ticket">
-              <div class="ticket-top"><span class="ticket-num">04</span><span class="ticket-tag">Partnership</span></div>
-              <h4>90-Day Content &amp; Social Support System</h4>
-              <p class="ticket-hook">Keep the strategy moving.</p>
-              <ul class="ticket-list">
-                <li>Monthly strategic planning &amp; content direction</li>
-                <li>Campaign coordination &amp; creative review</li>
-                <li>Messaging refinement &amp; performance observations</li>
-                <li>Coordination with your designer, VA, or team</li>
-              </ul>
-              <p class="ticket-deliverable">The strategic brain coordinating your content ecosystem—not necessarily the one making every post.</p>
-              <button class="ticket-cta" data-scroll="contact">Let's talk <span>↗</span></button>
-            </article>
-          </div>
-          <p class="ladder-note">Most people start at 01 or 02.</p>
-        </div>
-
-        <div class="contact-card reveal" id="contact">
-          <div class="contact-copy">
-            <span class="availability"><i></i> Open for select projects</span>
-            <p class="response-time">Typically responds within 24 hours</p>
-            <h2>Your business already has something worth saying.</h2>
-            <p>Let’s make it easier for the right people to notice, understand, and choose it.</p>
-          </div>
-          <div class="contact-actions">
-            <button class="btn btn-cream" id="message-button">Message me directly <span>↗</span></button>
-            <p>Contact link is intentionally inactive until approved.</p>
-          </div>
-          <div class="contact-signoff">Kim <span>✦</span></div>
-        </div>
-
-        <footer>
-          <a class="wordmark footer-mark" href="#top"><span class="wordmark-dot"></span>Kim Creative</a>
-          <p>Social strategy · Creative direction · Conversion copy<br /><span class="footer-authority">Independent strategist · based in Tarlac, working with brands remotely</span></p>
-          <p>© <span id="year"></span> Kim Creative</p>
-        </footer>
-      </section>
-    <div class="page-bottom" style="padding:30px 5vw 60px"><a class="btn btn-primary" href="#reels-showcase">Reels showcase ↗</a><a class="btn btn-primary" href="#platform-playbook">Platform playbook ↗</a><a class="btn btn-primary" href="#sample-data">Sample reporting ↗</a></div></main><section class="extra-page" id="reels-showcase" hidden aria-labelledby="reels-title"><div class="page-top"><a href="#top">← Back to portfolio</a><span>KIM CREATIVE / SELECTED SAMPLES</span></div><div class="page-heading"><p class="micro">Short-form creative / Four sample spaces</p><h1 id="reels-title" tabindex="-1">Small screen.<br><em>Clear intention.</em></h1><p class="intro">A place for the hooks, stories, and visual choices that make a Reel worth watching. Four formats. A different job for each.</p></div><div class="phone-grid"><article class="reel-card"><div class="phone"><div class="phone-screen"><div class="phone-island"></div><div class="reel-slot"><strong>01</strong><span>Your Reel here</span><small>9:16 · video or cover</small></div></div></div><h2>The scroll stopper</h2><p>An opening hook that earns attention.</p><label class="upload-label">Preview your video or cover<input class="reel-upload" type="file" accept="video/*,image/*" aria-label="Choose media for Reel 01"></label></article><article class="reel-card"><div class="phone"><div class="phone-screen"><div class="phone-island"></div><div class="reel-slot"><strong>02</strong><span>Your Reel here</span><small>9:16 · video or cover</small></div></div></div><h2>The useful one</h2><p>A short explanation that makes the value clear.</p><label class="upload-label">Preview your video or cover<input class="reel-upload" type="file" accept="video/*,image/*" aria-label="Choose media for Reel 02"></label></article><article class="reel-card"><div class="phone"><div class="phone-screen"><div class="phone-island"></div><div class="reel-slot"><strong>03</strong><span>Your Reel here</span><small>9:16 · video or cover</small></div></div></div><h2>The human moment</h2><p>A story that brings the person behind the brand closer.</p><label class="upload-label">Preview your video or cover<input class="reel-upload" type="file" accept="video/*,image/*" aria-label="Choose media for Reel 03"></label></article><article class="reel-card"><div class="phone"><div class="phone-screen"><div class="phone-island"></div><div class="reel-slot"><strong>04</strong><span>Your Reel here</span><small>9:16 · video or cover</small></div></div></div><h2>The next step</h2><p>An offer-led Reel with a specific invitation.</p><label class="upload-label">Preview your video or cover<input class="reel-upload" type="file" accept="video/*,image/*" aria-label="Choose media for Reel 04"></label></article></div><p class="page-note">Add your finished samples to these spaces. The file pickers preview media only on this device; previews reset when you close or reload the page. To keep them in the portfolio, add the media to the source HTML.</p><div class="page-bottom"><a class="text-link" href="#work">Explore strategy work ↗</a><a class="text-link" href="#platform-playbook">View the platform playbook ↗</a></div></section><section class="extra-page" id="platform-playbook" hidden aria-labelledby="playbook-title"><div class="page-top"><a href="#top">← Back to portfolio</a><span>KIM CREATIVE / PLATFORM STRATEGY</span></div><div class="page-heading"><p class="micro">Platform strategy / Eight ways to win</p><h1 id="playbook-title" tabindex="-1">Same message.<br><em>Eight different games.</em></h1><p class="intro">Every platform rewards a different behavior. Here's how the strategy changes to win on each one.</p></div><div class="playbook-grid">
-
-<article class="platform-card"><div class="platform-visual" data-tone="1"><span>Your Threads visual here</span></div><div class="platform-body"><span class="platform-tag">Threads</span><h3>The way in: <em>Hook the pain, not the product.</em></h3><ul class="platform-list"><li>Open with a line that names a specific pain tied to the offer, not the offer itself</li><li>Keep the caption link-free so reach isn't suppressed</li><li>Drop the link in the first comment once people are already engaged and replying</li><li>Reply to real replies — Threads rewards back-and-forth, not broadcast</li></ul><button class="platform-cta" data-platform-open="threads">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="2"><span>Your Facebook visual here</span></div><div class="platform-body"><span class="platform-tag">Facebook</span><h3>The way in: <em>Belong before you sell.</em></h3><ul class="platform-list"><li>Native video and carousels outperform outbound links in the feed</li><li>Post inside relevant groups first, page second</li><li>Let a pinned comment carry the offer or link, not the caption</li><li>Lean on trust signals — reviews, before/afters, real names</li></ul><button class="platform-cta" data-platform-open="facebook">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="3"><span>Your LinkedIn visual here</span></div><div class="platform-body"><span class="platform-tag">LinkedIn</span><h3>The way in: <em>Lead with expertise, not personality.</em></h3><ul class="platform-list"><li>First two lines are the whole hook — everything after "see more" only gets read if those earn the click</li><li>Native documents and carousel PDFs keep people dwelling inside the post</li><li>Comments in the first 60 minutes matter more than likes — end on a real question</li><li>Keep the link out of the post itself, drop it in the first comment</li></ul><button class="platform-cta" data-platform-open="linkedin">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="4"><span>Your Instagram visual here</span></div><div class="platform-body"><span class="platform-tag">Instagram</span><h3>The way in: <em>Win the first three seconds, then win the save.</em></h3><ul class="platform-list"><li>Reels get discovered, carousels get saved — build for both</li><li>Hook in the first frame, payoff by the third</li><li>Caption carries the story, "link in bio" carries the action</li><li>Stories carry urgency and behind-the-scenes</li></ul><button class="platform-cta" data-platform-open="instagram">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="5"><span>Your YouTube visual here</span></div><div class="platform-body"><span class="platform-tag">YouTube</span><h3>The way in: <em>The thumbnail sells the click, the first 15 seconds sell the watch.</em></h3><ul class="platform-list"><li>Title and thumbnail are the whole pitch before anyone sees a frame</li><li>Structure for retention, not just information</li><li>Shorts feed discovery, long-form builds the relationship</li><li>The one platform where the link in the description can just be a link</li></ul><button class="platform-cta" data-platform-open="youtube">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="6"><span>Your TikTok visual here</span></div><div class="platform-body"><span class="platform-tag">TikTok</span><h3>The way in: <em>Earn the algorithm, not the following.</em></h3><ul class="platform-list"><li>An interest graph, not a follower graph — zero followers can still reach thousands</li><li>Hook inside the first 1–2 seconds or the scroll wins</li><li>Native sounds and trends aren't optional, they're distribution</li><li>Reply to comments with a video, not just a line</li></ul><button class="platform-cta" data-platform-open="tiktok">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="7"><span>Your Reddit visual here</span></div><div class="platform-body"><span class="platform-tag">Reddit</span><h3>The way in: <em>Add to the thread before you ever ask for anything.</em></h3><ul class="platform-list"><li>Promotion gets punished, genuine specific answers get rewarded</li><li>Build context and karma before a single mention of the offer</li><li>Let people ask for the link in the comments, don't lead with it</li><li>These threads rank on Google for years — today's value keeps working</li></ul><button class="platform-cta" data-platform-open="reddit">See the strategy <span>↗</span></button></div></article>
-
-<article class="platform-card"><div class="platform-visual" data-tone="8"><span>Your Pinterest visual here</span></div><div class="platform-body"><span class="platform-tag">Pinterest</span><h3>The way in: <em>Build for search, not for the scroll.</em></h3><ul class="platform-list"><li>Behaves like a search engine — keyword-rich pins surface for months, not hours</li><li>Idea Pins for discovery, static Pins for evergreen search traffic</li><li>The one platform where a direct clickable link on the pin is expected</li><li>Design for saves — a pin's job is to be revisited</li></ul><button class="platform-cta" data-platform-open="pinterest">See the strategy <span>↗</span></button></div></article>
-
-</div><p class="page-note">Each platform card uses a placeholder visual until the real one is added — swap in your own screenshot or graphic for each platform when ready.</p><div class="page-bottom"><a class="text-link" href="#reels-showcase">← View Reels showcase</a><a class="text-link" href="#sample-data">View sample reporting →</a></div></section><section class="extra-page" id="sample-data" hidden aria-labelledby="data-title"><div class="page-top"><a href="#top">← Back to portfolio</a><span>KIM CREATIVE / SELECTED SAMPLES</span></div><div class="page-heading"><p class="micro">Reporting / Sample dashboard</p><h1 id="data-title" tabindex="-1">Read the signal.<br><em>Make the next move.</em></h1><p class="intro">A sample of how I organize performance, interpret the content, and turn the numbers into a practical next test.</p><span class="demo-label">Illustrative data · Not client results</span></div><div class="data-kpis"><div class="data-kpi"><span>Reach</span><strong>24,800</strong><small>Unique accounts · demo</small></div><div class="data-kpi"><span>Engagements</span><strong>1,240</strong><small>Interactions · demo</small></div><div class="data-kpi"><span>Link clicks</span><strong>310</strong><small>Outbound clicks · demo</small></div><div class="data-kpi"><span>Inquiries</span><strong>18</strong><small>Reported inquiries · demo</small></div></div><div class="report-grid"><article class="report-panel"><h2>Are people choosing to save?</h2><p>Weekly saves, shown as counts across a four-week demo period.</p><div class="metric-row"><span>Week 1</span><div class="metric-track"><div class="metric-fill" style="width:52.5%"></div></div><strong>42</strong></div><div class="metric-row"><span>Week 2</span><div class="metric-track"><div class="metric-fill" style="width:80%"></div></div><strong>64</strong></div><div class="metric-row"><span>Week 3</span><div class="metric-track"><div class="metric-fill" style="width:92.5%"></div></div><strong>74</strong></div><div class="metric-row"><span>Week 4</span><div class="metric-track"><div class="metric-fill" style="width:100%"></div></div><strong>80</strong></div><p>Total saves: <strong>260</strong>. Saves show interest in returning to content; they do not establish sales impact.</p></article><article class="report-panel"><h2>From observation to action</h2><p><strong>Observation:</strong> Educational content has the highest save rate in this sample: 130 saves ÷ 8,000 reached = 1.63%.</p><p><strong>Working hypothesis:</strong> Practical explanations may be useful enough to revisit. The dataset alone cannot explain why.</p><p class="takeaway"><strong>Next test:</strong> Publish two educational Reels on the same topic, vary the opening hook, and compare saves per account reached over the same seven-day window.</p></article></div><div class="table-scroll"><table class="data-table"><caption>Content mix / Demo performance</caption><thead><tr><th scope="col">Content role</th><th scope="col">Posts</th><th scope="col">Reach*</th><th scope="col">Saves</th><th scope="col">Save rate</th></tr></thead><tbody><tr><th scope="row">Awareness</th><td>4</td><td>12,000</td><td>90</td><td>0.75%</td></tr><tr><th scope="row">Education</th><td>4</td><td>8,000</td><td>130</td><td>1.63%</td></tr><tr><th scope="row">Offer</th><td>2</td><td>6,000</td><td>40</td><td>0.67%</td></tr></tbody></table></div><p class="page-note">All values are fictional and provided to demonstrate reporting structure. Save rate = saves ÷ reach × 100, rounded to two decimals. *Reach can overlap across content roles and should not be summed as unique accounts. Weekly and content-role saves both total 260. Replace this dataset with verified results and a defined reporting period before using it as client proof.</p><div class="page-bottom"><a class="text-link" href="#platform-playbook">← View platform playbook</a><a class="text-link" href="#inquiry">Discuss your project ↗</a></div></section>
-
-    <div class="case-modal" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-      <div class="modal-backdrop" data-close-modal></div>
-      <div class="modal-panel">
-        <button class="modal-close" data-close-modal aria-label="Close case study">×</button>
-        <p class="micro" id="modal-label">Concept study</p>
-        <h2 id="modal-title"></h2>
-        <p class="modal-thesis" id="modal-thesis"></p>
-        <div class="modal-flow">
-          <div><span>01 / Signal</span><h3>The tension</h3><p id="modal-tension"></p></div>
-          <div><span>02 / Choice</span><h3>The strategic move</h3><p id="modal-move"></p></div>
-          <div><span>03 / System</span><h3>How it shows up</h3><p id="modal-system"></p></div>
-        </div>
-        <div class="modal-proof"><span>What I’m proving</span><p id="modal-proof"></p></div>
-        <div class="modal-proof modal-meaning"><span>What this means for you</span><p id="modal-meaning"></p></div>
-        <button class="btn btn-primary" data-close-modal>Back to selected work</button>
       </div>
     </div>
+  </div>
+</section>
 
-    <div id="platform-modal" role="dialog" aria-modal="true" aria-labelledby="platform-modal-title" hidden>
-      <div class="modal-backdrop" data-close-platform-modal></div>
-      <div class="modal-panel">
-        <button class="modal-close" data-close-platform-modal aria-label="Close platform strategy">×</button>
-        <p class="micro" id="platform-modal-tag">Platform</p>
-        <h2 id="platform-modal-title"></h2>
-        <p class="modal-thesis" id="platform-modal-context"></p>
-        <button class="btn btn-primary" data-close-platform-modal>Back to the playbook</button>
-      </div>
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="num">01</span> &nbsp;Ways to work together</p>
+      <h2 class="big">Not more noise.<br><span class="rd">A sharper reason to care.</span></h2>
+      <p class="lede">I build the thinking, language, and creative direction that give your content somewhere meaningful to go.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Service areas">
+      <button class="tab" role="tab" id="tab-strategy" aria-controls="p-strategy" aria-selected="true">Strategy</button>
+      <button class="tab" role="tab" id="tab-content" aria-controls="p-content" aria-selected="false">Content</button>
+      <button class="tab" role="tab" id="tab-conversion" aria-controls="p-conversion" aria-selected="false">Conversion</button>
     </div>
 
-    <div class="toast" id="toast" role="status" aria-live="polite">Contact is still in preview mode—nothing was sent.</div>
-    <script>
-const serviceData = {
-  strategy: {
-    index: "01",
-    overline: "Clarity before output",
-    title: "Brand-to-Content Strategy",
-    description: "For brands that have outgrown ‘just post consistently.’ We find the message, audience tension, content roles, and campaign direction before deciding what to make.",
-    items: ["Positioning & audience research", "Content pillars with conversion intent", "Creative testing map", "90-day strategic direction"]
-  },
-  content: {
-    index: "02",
-    overline: "A system with a pulse",
-    title: "Creative Content Direction",
-    description: "A repeatable creative system that keeps the brand recognizable without making every post feel the same—from strong hooks to visual routes and short-form concepts.",
-    items: ["Campaign & series concepts", "Reels, carousel & static direction", "Hooks, scripts & captions", "Monthly content architecture"]
-  },
-  conversion: {
-    index: "03",
-    overline: "Make the next step obvious",
-    title: "Conversion Copy & Paid Social",
-    description: "Clear, specific language for moments where attention needs to become action—without stripping the voice or overselling the outcome.",
-    items: ["Landing page & funnel copy", "Meta and TikTok ad concepts", "Email & SMS sequences", "Testing and message iteration"]
+    <div class="glass panel" role="tabpanel" id="p-strategy" aria-labelledby="tab-strategy">
+      <div>
+        <span class="step-n">01 · Clarity before output</span>
+        <h3 class="mid">Brand-to-Content Strategy</h3>
+        <p class="lede">For brands that have outgrown 'just post consistently.' We find the message, audience tension, content roles, and campaign direction before deciding what to make.</p>
+      </div>
+      <ul class="ticks">
+        <li>Positioning &amp; audience research</li>
+        <li>Content pillars with conversion intent</li>
+        <li>Creative testing map</li>
+        <li>90-day strategic direction</li>
+      </ul>
+    </div>
+
+    <div class="glass panel" role="tabpanel" id="p-content" aria-labelledby="tab-content" hidden>
+      <div>
+        <span class="step-n">02 · A system with a pulse</span>
+        <h3 class="mid">Creative Content Direction</h3>
+        <p class="lede">A repeatable creative system that keeps the brand recognizable without making every post feel the same—from strong hooks to visual routes and short-form concepts.</p>
+      </div>
+      <ul class="ticks">
+        <li>Campaign &amp; series concepts</li>
+        <li>Reels, carousel &amp; static direction</li>
+        <li>Hooks, scripts &amp; captions</li>
+        <li>Monthly content architecture</li>
+      </ul>
+    </div>
+
+    <div class="glass panel" role="tabpanel" id="p-conversion" aria-labelledby="tab-conversion" hidden>
+      <div>
+        <span class="step-n">03 · Make the next step obvious</span>
+        <h3 class="mid">Conversion Copy &amp; Paid Social</h3>
+        <p class="lede">Clear, specific language for moments where attention needs to become action—without stripping the voice or overselling the outcome.</p>
+      </div>
+      <ul class="ticks">
+        <li>Landing page &amp; funnel copy</li>
+        <li>Meta and TikTok ad concepts</li>
+        <li>Email &amp; SMS sequences</li>
+        <li>Testing and message iteration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="num">02</span> &nbsp;Selected concept work</p>
+      <h2 class="big">The design catches the eye.<br><span class="rd">The thinking holds it.</span></h2>
+      <p class="lede">Five self-initiated case studies built to show the strategic decisions behind the surface. No borrowed metrics. No pretend client results.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work">
+      <button class="filter" data-cat="all" aria-pressed="true">All work <b>05</b></button>
+      <button class="filter" data-cat="brand" aria-pressed="false">Brand strategy <b>02</b></button>
+      <button class="filter" data-cat="systems" aria-pressed="false">Content systems <b>05</b></button>
+      <button class="filter" data-cat="conversion" aria-pressed="false">Conversion <b>04</b></button>
+    </div>
+    <div class="work-grid" id="workGrid">
+      <article class="glass work-card" data-cat="brand systems">
+        <span class="idx">01</span>
+        <p class="eyebrow">Concept study · Leadership brand · Positioning</p>
+        <h3>Lumen House</h3>
+        <p>Positioned Maya Reyes as the calm, clear alternative to performative leadership—then translated that point of view into a recognizable content and offer system.</p>
+        <div class="chips"><span class="chip">Founder positioning</span><span class="chip">Editorial system</span><span class="chip">Offer journey</span></div>
+        <a class="link" href="#inquiry">See the thinking ↗</a>
+      </article>
+      <article class="glass work-card" data-cat="brand systems conversion">
+        <span class="idx">02</span>
+        <p class="eyebrow">Concept study · Cleaning service · Trust funnel</p>
+        <h3>Freshspace</h3>
+        <p>Turned "we clean spaces" into a clearer promise: cleaner environments that help people live and work better—supported by proof, education, and direct-response content.</p>
+        <div class="chips"><span class="chip">Message hierarchy</span><span class="chip">Trust content</span><span class="chip">Lead generation</span></div>
+        <a class="link" href="#inquiry">See the thinking ↗</a>
+      </article>
+      <article class="glass work-card" data-cat="systems conversion">
+        <span class="idx">03</span>
+        <p class="eyebrow">Concept study · Dental clinic · Patient journey</p>
+        <h3>BrightSmile</h3>
+        <p>Built a patient-friendly content mix that moves from reassurance and useful education to treatment proof and low-friction appointment prompts.</p>
+        <div class="chips"><span class="chip">Patient education</span><span class="chip">Proof content</span><span class="chip">Booking CTA</span></div>
+        <a class="link" href="#inquiry">See the thinking ↗</a>
+      </article>
+      <article class="glass work-card" data-cat="systems conversion">
+        <span class="idx">04</span>
+        <p class="eyebrow">Curated feed study · Sports lifestyle · Social concepts</p>
+        <h3>Courtside Social</h3>
+        <p>A six-post feed study exploring how racquet-sport content can balance product desire, beginner energy, community, lifestyle, consistency, and pattern-interrupt creative.</p>
+        <div class="chips"><span class="chip">Content variety</span><span class="chip">Community energy</span><span class="chip">Visual system</span></div>
+        <a class="link" href="#inquiry">See the thinking ↗</a>
+      </article>
+      <article class="glass work-card" data-cat="systems conversion">
+        <span class="idx">05</span>
+        <p class="eyebrow">Paid creative studies · Consumer products · Paid creative</p>
+        <h3>Product Creative Lab</h3>
+        <p>Two attention-first ad routes that make the product impossible to miss: one built on a familiar emergency-device visual, the other on exaggerated scale and movement.</p>
+        <div class="chips"><span class="chip">Pattern interrupt</span><span class="chip">Product framing</span><span class="chip">Paid social</span></div>
+        <a class="link" href="#inquiry">See the thinking ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="num">03</span> &nbsp;From idea to useful system</p>
+      <h2 class="big">Clear thinking.<br><span class="rd">Then the good stuff.</span></h2>
+      <p class="lede">A collaborative process designed to get us out of vague territory quickly—and into work your audience can recognize themselves in.</p>
+    </div>
+    <div class="proc">
+      <article class="glass card"><span class="step-n">01</span><h4>Listen closely</h4><p>Business context, customer language, existing signals, and the real friction under the brief.</p></article>
+      <article class="glass card"><span class="step-n">02</span><h4>Find the angle</h4><p>Positioning, message hierarchy, content roles, and a strategic idea strong enough to hold the work.</p></article>
+      <article class="glass card"><span class="step-n">03</span><h4>Build the system</h4><p>Concepts, copy, creative direction, and an operating rhythm your brand can keep using.</p></article>
+      <article class="glass card"><span class="step-n">04</span><h4>Learn &amp; sharpen</h4><p>Review the signal, refine the creative, and make the next decision with better information.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Four ways to start</p>
+      <h2 class="big">Not one price. <span class="rd">Four ways in.</span></h2>
+      <p class="lede">Pick the entry point that matches where you are—from a second opinion to an ongoing strategic partner.</p>
+    </div>
+    <div class="path">
+      <span><b>01</b> See it clearly</span><span class="rd">→</span>
+      <span><b>02</b> Position it intentionally</span><span class="rd">→</span>
+      <span><b>03</b> Build the foundation</span><span class="rd">→</span>
+      <span><b>04</b> Keep it moving</span>
+    </div>
+    <div class="offers">
+      <article class="glass offer">
+        <span class="kind">01 · Quick</span>
+        <h4>Social Presence Audit</h4>
+        <p class="claim">A second set of eyes on your social presence.</p>
+        <ul class="ticks"><li>Profile positioning</li><li>Content direction</li><li>Visual consistency</li><li>Messaging &amp; audience connection</li></ul>
+        <p class="note">A concise audit with prioritized recommendations.</p>
+        <a class="link" href="#inquiry">Let's talk ↗</a>
+      </article>
+      <article class="glass offer featured" id="featuredOffer">
+        <span class="sheen" aria-hidden="true"></span>
+        <span class="kind">02 · Core</span>
+        <h4>Positioning + Creative Direction</h4>
+        <p class="claim">Make the brand feel like the business it's becoming.</p>
+        <ul class="ticks"><li>Positioning &amp; message clarity</li><li>Brand voice direction</li><li>Content pillars &amp; creative territories</li><li>Visual/content direction</li></ul>
+        <p class="note">Not a rebrand—helping an already-built business become more intentional and recognizable in how it shows up.</p>
+        <a class="link" href="#inquiry">Let's talk ↗</a>
+      </article>
+      <article class="glass offer">
+        <span class="kind">03 · Foundation</span>
+        <h4>30-Day Strategic Content Plan</h4>
+        <p class="claim">A month of content with a reason behind it.</p>
+        <ul class="ticks"><li>30-day content map with weekly themes</li><li>Campaign &amp; offer angles</li><li>Reel concepts, hooks &amp; CTA direction</li><li>Repurposing opportunities</li></ul>
+        <p class="note">You're not buying 30 posts. You're buying 30 days of strategic direction.</p>
+        <a class="link" href="#inquiry">Let's talk ↗</a>
+      </article>
+      <article class="glass offer">
+        <span class="kind">04 · Partnership</span>
+        <h4>90-Day Content &amp; Social Support System</h4>
+        <p class="claim">Keep the strategy moving.</p>
+        <ul class="ticks"><li>Monthly strategic planning &amp; content direction</li><li>Campaign coordination &amp; creative review</li><li>Messaging refinement &amp; performance observations</li><li>Coordination with your designer, VA, or team</li></ul>
+        <p class="note">The strategic brain coordinating your content ecosystem—not necessarily the one making every post.</p>
+        <a class="link" href="#inquiry">Let's talk ↗</a>
+      </article>
+    </div>
+    <p class="most">Most people start at 01 or 02.</p>
+  </div>
+</section>
+
+
+<section class="section" id="platform-playbook">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Kim Creative / Platform strategy · Seven ways to win</p>
+      <h2 class="big">Same message.<br><span class="rd">Seven different games.</span></h2>
+      <p class="lede">Every platform rewards a different behavior. Here's how the strategy changes to win on each one.</p>
+    </div>
+    <div class="plat">
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-threads.jpg" alt="Threads tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>Threads</h4>
+        <p class="way"><b>The way in:</b> Hook the pain, not the product.</p>
+        <ul>
+          <li>Open with a line that names a specific pain tied to the offer, not the offer itself</li>
+          <li>Keep the caption link-free so reach isn't suppressed</li>
+          <li>Drop the link in the first comment once people are already engaged and replying</li>
+          <li>Reply to real replies — Threads rewards back-and-forth, not broadcast</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-facebook.jpg" alt="Facebook tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>Facebook</h4>
+        <p class="way"><b>The way in:</b> Belong before you sell.</p>
+        <ul>
+          <li>Native video and carousels outperform outbound links in the feed</li>
+          <li>Post inside relevant groups first, page second</li>
+          <li>Let a pinned comment carry the offer or link, not the caption</li>
+          <li>Lean on trust signals — reviews, before/afters, real names</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-linkedin.jpg" alt="LinkedIn tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>LinkedIn</h4>
+        <p class="way"><b>The way in:</b> Lead with expertise, not personality.</p>
+        <ul>
+          <li>First two lines are the whole hook — everything after "see more" only gets read if those earn the click</li>
+          <li>Native documents and carousel PDFs keep people dwelling inside the post</li>
+          <li>Comments in the first 60 minutes matter more than likes — end on a real question</li>
+          <li>Keep the link out of the post itself, drop it in the first comment</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-instagram.jpg" alt="Instagram tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>Instagram</h4>
+        <p class="way"><b>The way in:</b> Win the first three seconds, then win the save.</p>
+        <ul>
+          <li>Reels get discovered, carousels get saved — build for both</li>
+          <li>Hook in the first frame, payoff by the third</li>
+          <li>Caption carries the story, "link in bio" carries the action</li>
+          <li>Stories carry urgency and behind-the-scenes</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-youtube.jpg" alt="YouTube tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>YouTube</h4>
+        <p class="way"><b>The way in:</b> The thumbnail sells the click, the first 15 seconds sell the watch.</p>
+        <ul>
+          <li>Title and thumbnail are the whole pitch before anyone sees a frame</li>
+          <li>Structure for retention, not just information</li>
+          <li>Shorts feed discovery, long-form builds the relationship</li>
+          <li>The one platform where the link in the description can just be a link</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-tiktok.jpg" alt="TikTok tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>TikTok</h4>
+        <p class="way"><b>The way in:</b> Earn the algorithm, not the following.</p>
+        <ul>
+          <li>An interest graph, not a follower graph — zero followers can still reach thousands</li>
+          <li>Hook inside the first 1–2 seconds or the scroll wins</li>
+          <li>Native sounds and trends aren't optional, they're distribution</li>
+          <li>Reply to comments with a video, not just a line</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+      <article class="glass plat-card">
+        <div class="visual"><span class="badge"><img src="social-pinterest.jpg" alt="Pinterest tile in the burgundy lily and gold leopard style"></span></div>
+        <h4>Pinterest</h4>
+        <p class="way"><b>The way in:</b> Build for search, not for the scroll.</p>
+        <ul>
+          <li>Behaves like a search engine — keyword-rich pins surface for months, not hours</li>
+          <li>Idea Pins for discovery, static Pins for evergreen search traffic</li>
+          <li>The one platform where a direct clickable link on the pin is expected</li>
+          <li>Design for saves — a pin's job is to be revisited</li>
+        </ul>
+        <a class="link" href="#inquiry">See the strategy ↗</a>
+      </article>
+    </div>
+    <p class="footnote">All seven tiles use the same burgundy lily and gold leopard treatment — swap any of them for a different crop whenever you want.</p>
+  </div>
+</section>
+
+<section class="section" id="sample-data">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Kim Creative / Reporting · Sample dashboard</p>
+      <h2 class="big">Read the signal.<br><span class="rd">Make the next move.</span></h2>
+      <p class="lede">A sample of how I organize performance, interpret the content, and turn the numbers into a practical next test.</p>
+      <p><span class="flag">Illustrative data · Not client results</span></p>
+    </div>
+
+    <div class="kpis">
+      <div class="glass kpi"><span class="k">Reach</span><span class="v">24,800</span><span class="s">Unique accounts · demo</span></div>
+      <div class="glass kpi"><span class="k">Engagements</span><span class="v">1,240</span><span class="s">Interactions · demo</span></div>
+      <div class="glass kpi"><span class="k">Link clicks</span><span class="v">310</span><span class="s">Outbound clicks · demo</span></div>
+      <div class="glass kpi"><span class="k">Inquiries</span><span class="v">18</span><span class="s">Reported inquiries · demo</span></div>
+    </div>
+
+    <div class="data-grid">
+      <article class="glass card">
+        <h3 class="mid">Are people choosing to save?</h3>
+        <p class="lede" style="margin-top:12px">Weekly saves, shown as counts across a four-week demo period.</p>
+        <div class="bars">
+          <div class="bar-row"><span>Week 1</span><span class="bar"><i style="width:52.5%"></i></span><span class="n">42</span></div>
+          <div class="bar-row"><span>Week 2</span><span class="bar"><i style="width:80%"></i></span><span class="n">64</span></div>
+          <div class="bar-row"><span>Week 3</span><span class="bar"><i style="width:92.5%"></i></span><span class="n">74</span></div>
+          <div class="bar-row"><span>Week 4</span><span class="bar"><i style="width:100%"></i></span><span class="n">80</span></div>
+        </div>
+        <p class="footnote">Total saves: 260. Saves show interest in returning to content; they do not establish sales impact.</p>
+      </article>
+
+      <article class="glass card">
+        <h3 class="mid">From observation to action</h3>
+        <ul class="steps" style="display:grid;gap:16px;margin-top:16px">
+          <li style="color:var(--muted)"><span class="step-n" style="margin-bottom:4px">Observation</span>Educational content has the highest save rate in this sample: 130 saves ÷ 8,000 reached = 1.63%.</li>
+          <li style="color:var(--muted)"><span class="step-n" style="margin-bottom:4px">Working hypothesis</span>Practical explanations may be useful enough to revisit. The dataset alone cannot explain why.</li>
+          <li style="color:var(--muted)"><span class="step-n" style="margin-bottom:4px">Next test</span>Publish two educational Reels on the same topic, vary the opening hook, and compare saves per account reached over the same seven-day window.</li>
+        </ul>
+      </article>
+    </div>
+
+    <article class="glass card" style="margin-top:18px">
+      <h3 class="mid">Content mix / Demo performance</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col">Content role</th><th scope="col">Posts</th><th scope="col">Reach*</th><th scope="col">Saves</th><th scope="col">Save rate</th></tr></thead>
+          <tbody>
+            <tr><td>Awareness</td><td>4</td><td>12,000</td><td>90</td><td>0.75%</td></tr>
+            <tr><td>Education</td><td>4</td><td>8,000</td><td>130</td><td>1.63%</td></tr>
+            <tr><td>Offer</td><td>2</td><td>6,000</td><td>40</td><td>0.67%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">All values are fictional and provided to demonstrate reporting structure. Save rate = saves ÷ reach × 100, rounded to two decimals. *Reach can overlap across content roles and should not be summed as unique accounts. Weekly and content-role saves both total 260. Replace this dataset with verified results and a defined reporting period before using it as client proof.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="inquiry">
+  <div class="wrap">
+    <div class="inq-panel">
+      <div class="inq-copy">
+        <span class="avail"><span class="dot"></span> Open for select projects</span>
+        <h2 class="big">Your business already has something <span class="rd">worth saying.</span></h2>
+        <p class="lede">Let's make it easier for the right people to notice, understand, and choose it.</p>
+        <div class="inq-actions">
+          <a class="btn btn-solid" id="mailBtn" href="mailto:hellokimcreativeideas@gmail.com?subject=Project%20inquiry%20from%20your%20website">Message me directly ↗</a>
+          <button class="copy-mail" type="button" id="copyMail" aria-describedby="copyStatus">
+            <span class="mail-addr" id="mailText">hellokimcreativeideas@gmail.com</span><span class="copy-lbl" aria-hidden="true">Copy</span>
+          </button>
+          <span class="vh" id="copyStatus" role="status" aria-live="polite"></span>
+        </div>
+        <p class="footnote">Typically responds within 24 hours.</p>
+      </div>
+      <div class="inq-art" aria-hidden="true"><img id="cherryImg" src="cherries.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="#top" style="margin-bottom:10px"><i></i>Kim Creative</a>
+      <p>Social strategy · Creative direction · Conversion copy</p>
+      <p style="margin-top:6px">Independent strategist · Based in Tarlac, working with brands remotely</p>
+      <div class="social-block" style="margin-top:20px">
+        <div class="social">
+          <a href="https://www.instagram.com/kimsangcap_creativealchemist/" target="_blank" rel="noopener noreferrer"><img src="social-instagram.jpg" alt=""><span class="vh">Instagram</span></a>
+          <span class="tile" title="Facebook link not added yet"><img src="social-facebook.jpg" alt=""><span class="vh">Facebook — link not added yet</span></span>
+          <a href="https://www.tiktok.com/@alkimmycreatives" target="_blank" rel="noopener noreferrer"><img src="social-tiktok.jpg" alt=""><span class="vh">TikTok</span></a>
+          <span class="tile" title="YouTube link not added yet"><img src="social-youtube.jpg" alt=""><span class="vh">YouTube — link not added yet</span></span>
+          <span class="tile" title="Pinterest link not added yet"><img src="social-pinterest.jpg" alt=""><span class="vh">Pinterest — link not added yet</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-links">
+      <a href="#platform-playbook">Platform playbook ↗</a>
+      <a href="#sample-data">Sample reporting ↗</a>
+    </div>
+    <p>© 2026 Kim Creative</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ---------- interactions (work with or without GSAP) ---------- */
+(function(){
+  function animateIn(el){
+    if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gsap.fromTo(el, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out', overwrite: true });
   }
-};
 
-const caseData = {
-  lumen: {
-    title: "Lumen House",
-    thesis: "Leadership content becomes more distinct when the point of view is stronger than the personality performance.",
-    tension: "The leadership space is full of louder-is-better advice, generic confidence language, and disconnected motivational posts. Maya needs authority without becoming another performance-driven guru.",
-    move: "Position Lumen House around calm clarity: better leadership through clearer decisions, human standards, and progress without performance.",
-    system: "A balanced editorial grid combining manifesto copy, founder perspective, frameworks, educational shifts, proof, video, and a direct invitation into private leadership sessions.",
-    proof: "Founder positioning, repeatable content architecture, message consistency, and an offer journey that feels like a natural extension of the point of view.",
-    meaning: "If your expertise is real but your content still feels like everyone else's, this is the shift that fixes it."
-  },
-  freshspace: {
-    title: "Freshspace",
-    thesis: "A cleaning service earns attention when it connects a cleaner environment to the life and work people want inside it.",
-    tension: "Most cleaning brands rely on identical before-and-after photos, generic reliability claims, and constant booking prompts—leaving little reason to remember one over another.",
-    move: "Own the idea of brighter days through better spaces. Pair the emotional benefit with visible standards, useful education, and specific proof.",
-    system: "A nine-post mix covering brand promise, commercial value, team trust, cleaning education, transformation proof, benefits, service quality, and direct lead generation.",
-    proof: "Service positioning, full-funnel content planning, visual consistency, and the ability to turn an ordinary local service into a recognizable brand.",
-    meaning: "If you're already reliable but you sound like every other option in your category, positioning—not more posting—is what changes that."
-  },
-  brightsmile: {
-    title: "BrightSmile",
-    thesis: "Dental marketing works better when it lowers uncertainty before it asks the patient to book.",
-    tension: "Clinical language can feel cold, while transformation-heavy content can create anxiety or unrealistic expectations. Patients need reassurance, useful information, and a clear next step.",
-    move: "Frame modern dentistry as confidence supported by gentle, transparent care—not cosmetic pressure.",
-    system: "A patient journey moving through emotional reassurance, preventive education, treatment clarity, before-and-after proof, technology, comfort, healthy habits, and booking prompts.",
-    proof: "Healthcare-sensitive messaging, educational content structure, trust building, and conversion design without aggressive selling.",
-    meaning: "If your field involves any patient hesitation or trust gap, the content sequence matters as much as the message itself."
-  },
-  courtside: {
-    title: "Courtside Social",
-    thesis: "Racquet-sport content becomes more magnetic when it sells belonging, ritual, and lifestyle—not only the match.",
-    tension: "Sports feeds often rely on game announcements or repetitive action shots. They show activity, but do not always create a world people want to join.",
-    move: "Curate the feed around six distinct audience motivations: identity, weekend fun, urgency, beginner confidence, consistency, and visible progress.",
-    system: "A six-post feed alternating dark product-led creative with bright community and lifestyle storytelling, creating rhythm while keeping every post’s job distinct.",
-    proof: "Feed curation, content-role variety, visual sequencing, pattern interruption, and culture-first thinking for an energetic lifestyle category.",
-    meaning: "If your audience is a community more than a customer base, your content needs to earn belonging before it earns a sale."
-  },
-  productlab: {
-    title: "Product Creative Lab",
-    thesis: "Product ads become scroll-stopping when the visual device dramatizes the use case before the caption has to explain it.",
-    tension: "Clean packshots communicate what a product is, but often fail to create curiosity, urgency, or a memorable reason to stop scrolling.",
-    move: "Use familiar visual codes in unfamiliar ways: an emergency case for an everyday problem, and exaggerated scale to make a functional product feel culturally visible.",
-    system: "Bold single-idea compositions designed for paid-social testing, with clear product focus, immediate category recognition, and room for multiple hook variations.",
-    proof: "Pattern-interrupt ideation, product framing, paid-social instincts, and the ability to turn a simple benefit into a high-recall visual concept.",
-    meaning: "If your product is easy to explain but hard to make someone stop scrolling for, the creative device matters more than the copy."
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(o){
+        var sel = o === t;
+        o.setAttribute('aria-selected', sel ? 'true' : 'false');
+        var panel = document.getElementById(o.getAttribute('aria-controls'));
+        if (!panel) return;
+        panel.hidden = !sel;
+        if (sel) animateIn(panel);
+      });
+    });
+  });
+
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#workGrid .work-card'));
+  filters.forEach(function(f){
+    f.addEventListener('click', function(){
+      var cat = f.dataset.cat, shown = [];
+      filters.forEach(function(o){ o.setAttribute('aria-pressed', o === f ? 'true' : 'false'); });
+      cards.forEach(function(c){
+        var keep = cat === 'all' || (' ' + c.dataset.cat + ' ').indexOf(' ' + cat + ' ') > -1;
+        c.hidden = !keep;
+        if (keep) shown.push(c);
+      });
+      if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.fromTo(shown, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out', overwrite: true });
+      }
+    });
+  });
+})();
+
+/* ---------- copy email (email links don't open for every visitor, so the address is always one tap away) ---------- */
+(function(){
+  var btn = document.getElementById('copyMail');
+  if (!btn) return;
+  var addr = document.getElementById('mailText');
+  var lbl = btn.querySelector('.copy-lbl');
+  var status = document.getElementById('copyStatus');
+  function done(msg){
+    lbl.textContent = msg; status.textContent = msg === 'Copied' ? 'Email address copied' : 'Email address selected';
+    btn.classList.add('copied');
+    setTimeout(function(){ lbl.textContent = 'Copy'; btn.classList.remove('copied'); status.textContent = ''; }, 2200);
   }
-};
-
-document.querySelectorAll("[data-scroll]").forEach((button) => {
-  button.addEventListener("click", () => document.getElementById(button.dataset.scroll)?.scrollIntoView({ behavior: "smooth" }));
-});
-
-document.querySelectorAll(".service-tab").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".service-tab").forEach((item) => {
-      item.classList.toggle("active", item === tab);
-      item.setAttribute("aria-selected", item === tab ? "true" : "false");
-    });
-    const data = serviceData[tab.dataset.service];
-    document.querySelector(".service-index").textContent = data.index;
-    document.querySelector(".service-overline").textContent = data.overline;
-    document.querySelector(".service-title").textContent = data.title;
-    document.querySelector(".service-description").textContent = data.description;
-    document.querySelector(".service-list").innerHTML = data.items.map((item) => `<li>${item}</li>`).join("");
+  function selectIt(){
+    var r = document.createRange(); r.selectNodeContents(addr);
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    done('Selected');
+  }
+  btn.addEventListener('click', function(){
+    var text = addr.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ window.getSelection().removeAllRanges(); done('Copied'); }, selectIt);
+    } else { selectIt(); }
   });
-});
+})();
 
-document.querySelectorAll(".filter").forEach((filter) => {
-  filter.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach((item) => item.classList.toggle("active", item === filter));
-    const value = filter.dataset.filter;
-    document.querySelectorAll(".case-card").forEach((card) => {
-      card.hidden = value !== "all" && !card.dataset.category.split(" ").includes(value);
-    });
-  });
-});
+/* ---------- motion layer (GSAP) ---------- */
+(function(){
+  if (!window.gsap) return;            /* page is complete and readable without it */
+  gsap.defaults({ duration: 0.6, ease: 'power2.out' });
+  var hasST = !!window.ScrollTrigger;
+  if (hasST) gsap.registerPlugin(ScrollTrigger);
 
-const modal = document.getElementById("case-modal");
-let lastFocused;
+  var mm = gsap.matchMedia();
 
-function openCase(key) {
-  const data = caseData[key];
-  if (!data) return;
-  lastFocused = document.activeElement;
-  document.getElementById("modal-title").textContent = data.title;
-  document.getElementById("modal-thesis").textContent = data.thesis;
-  document.getElementById("modal-tension").textContent = data.tension;
-  document.getElementById("modal-move").textContent = data.move;
-  document.getElementById("modal-system").textContent = data.system;
-  document.getElementById("modal-proof").textContent = data.proof;
-  document.getElementById("modal-meaning").textContent = data.meaning;
-  modal.hidden = false;
-  document.body.classList.add("modal-open");
-  modal.querySelector(".modal-close").focus();
-}
+  /* Elements that also carry a CSS `transition: transform` would lag behind GSAP's
+     per-frame values; switch that transition off while GSAP is driving them. */
+  function hush(){ this.targets().forEach(function(el){ el.style.transition = 'none'; }); }
+  function unhush(){ this.targets().forEach(function(el){ el.style.transition = ''; }); }
 
-function closeCase() {
-  modal.hidden = true;
-  document.body.classList.remove("modal-open");
-  lastFocused?.focus();
-}
+  /* Everything below runs only when the visitor has not asked for reduced motion.
+     matchMedia reverts every tween and ScrollTrigger it created if that changes. */
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
 
-document.querySelectorAll(".case-card").forEach((card) => {
-  card.addEventListener("click", () => openCase(card.dataset.case));
-  card.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openCase(card.dataset.case);
+    /* 1. Opening sequence */
+    var intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    intro
+      .from('.nav-in > *', { autoAlpha: 0, y: -12, duration: 0.6, stagger: 0.06, onStart: hush, onComplete: unhush })
+      .from('.hero .eyebrow', { autoAlpha: 0, y: 14, duration: 0.6 }, 0.15)
+      .from('.hero h1', { autoAlpha: 0, y: 28, duration: 0.95 }, '-=0.3')
+      .from('.hero .sub', { autoAlpha: 0, y: 18, duration: 0.7 }, '-=0.6')
+      .from('.hero .lede', { autoAlpha: 0, y: 18, duration: 0.7 }, '-=0.5')
+      .from('.hero-cta .btn', { autoAlpha: 0, y: 16, duration: 0.6, stagger: 0.08, onStart: hush, onComplete: unhush }, '-=0.45')
+      .from('.hero-stat', { autoAlpha: 0, y: 12, duration: 0.6 }, '-=0.4')
+      .from('.seal', { autoAlpha: 0, scale: 0.9, duration: 1.2, ease: 'power2.out' }, 0.5);
+
+    /* 1b. Page smoke: two copies of the same frame drifting on long, unequal clocks.
+           `lighten` means the overlap never brightens past one layer's own ceiling,
+           which is what keeps the contrast budget intact. */
+    gsap.set('#smokeA', { scale: 1.08, transformOrigin: '50% 50%' });
+    gsap.set('#smokeB', { scaleX: -1.22, scaleY: 1.22, transformOrigin: '50% 50%' });
+    gsap.to('#smokeA', { yPercent: -6, xPercent: 3, scale: 1.2, duration: 42, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('#smokeB', { yPercent: 7, xPercent: -4, rotation: 3, duration: 57, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('#smokeB', { opacity: 0.42, duration: 11, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    /* 3b. Hero seal turns slowly; the cherries breathe like wet lacquer */
+    gsap.to('#sealRing', { rotation: 360, svgOrigin: '100 100', duration: 40, repeat: -1, ease: 'none' });
+    gsap.fromTo('#cherryImg', { yPercent: -2, scale: 1 }, { yPercent: 2, scale: 1.05, duration: 6.5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    /* 3c. Featured offer: the blush flows like poured satin, and a band of light
+           crosses it every few seconds, the way light runs over lacquered cherries. */
+    gsap.to('#featuredOffer', { backgroundPosition: '100% 100%', duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.timeline({ repeat: -1, repeatDelay: 2.6, delay: 1.2 })
+      .fromTo('#featuredOffer .sheen', { xPercent: -120, skewX: -12 }, { xPercent: 260, skewX: -12, duration: 1.7, ease: 'power2.inOut' });
+    gsap.fromTo('#featuredOffer',
+      { boxShadow: '0 30px 70px -40px rgba(231,178,156,.45)' },
+      { boxShadow: '0 34px 90px -34px rgba(231,178,156,.85)', duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    /* 4. Availability dot */
+    gsap.to('.dot', { scale: 1.4, autoAlpha: 0.55, transformOrigin: '50% 50%', duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    /* 5. Service marquee */
+    gsap.to('.marquee ul', { xPercent: -50, duration: 34, ease: 'none', repeat: -1 });
+
+    /* 6. Scroll reveals */
+    if (hasST) {
+      gsap.utils.toArray('.section .sec-head').forEach(function(head){
+        gsap.from(head, {
+          autoAlpha: 0, y: 26, duration: 0.85, ease: 'power3.out',
+          scrollTrigger: { trigger: head, start: 'top 88%', once: true }
+        });
+      });
+
+      ['.thesis-grid .card', '#workGrid .work-card', '.proc .card', '.offers .offer',
+       '.plat .plat-card', '.kpis .kpi', '.data-grid .card'].forEach(function(sel){
+        var items = gsap.utils.toArray(sel);
+        if (!items.length) return;
+        gsap.set(items, { autoAlpha: 0, y: 24 });
+        ScrollTrigger.batch(items, {
+          start: 'top 92%', once: true,
+          onEnter: function(batch){
+            gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out', overwrite: 'auto', onStart: hush, onComplete: unhush });
+          }
+        });
+      });
     }
+
+    return function(){ /* matchMedia reverts the tweens above automatically */ };
   });
-});
-document.querySelectorAll("[data-close-modal]").forEach((item) => item.addEventListener("click", closeCase));
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !modal.hidden) closeCase();
-});
 
-const platformData = {
-  threads: { name: "Threads", headline: "The way in: Hook the pain, not the product.", context: "Threads runs on reply culture — the algorithm favors posts that spark real conversation over posts that just get read. A pain-point hook does double duty: it's honest, and it's exactly the kind of statement people stop to agree or argue with in the replies. Putting the link in the comments after that conversation has already started means people click because they're already invested, not because a caption told them to." },
-  facebook: { name: "Facebook", headline: "The way in: Belong before you sell.", context: "Facebook's algorithm was built around meaningful social interaction — comments and shares from people you know outrank almost everything else, which is why group context and pinned comments consistently outperform link-in-caption posts. The audience here also skews toward people who've been burned by ads before, so proof — reviews, real names, before/afters — does more persuasive work than polish does." },
-  linkedin: { name: "LinkedIn", headline: "The way in: Lead with expertise, not personality.", context: "LinkedIn's algorithm rewards dwell time and early engagement more than reach for its own sake — a post that keeps someone scrolling inside a document, or reading past the 'see more' cutoff, gets pushed to more of that person's network. Comments collected in the first hour signal relevance and unlock wider distribution, which is why ending on a real question outperforms a generic call to action. And like Threads, an outbound link inside the post itself gets quietly deprioritized, so the same link-in-comments move applies here too." },
-  instagram: { name: "Instagram", headline: "The way in: Win the first three seconds, then win the save.", context: "Instagram now runs two separate discovery engines — Reels for people who don't follow you yet, and the feed and carousels for people deciding whether to keep following. Saves and shares are the strongest ranking signal on carousels, which is why a carousel's job is to be useful enough to revisit, not just pretty enough to like." },
-  youtube: { name: "YouTube", headline: "The way in: The thumbnail sells the click, the first 15 seconds sell the watch.", context: "YouTube ranks on watch time and session behavior, not just views — a video that's clicked and abandoned quickly is actively penalized. That's why the thumbnail and title carry the entire pressure of the pitch: they decide whether someone gives you the first 15 seconds that determine if the algorithm keeps recommending the video at all." },
-  tiktok: { name: "TikTok", headline: "The way in: Earn the algorithm, not the following.", context: "TikTok's For You feed runs on an interest graph, not a social graph — it tests a new video against a small pool of strangers first and only expands reach if they finish watching. That's why a page with zero followers can outperform an established one: follower count barely matters, the first two seconds of completion rate does." },
-  reddit: { name: "Reddit", headline: "The way in: Add to the thread before you ever ask for anything.", context: "Reddit's culture punishes anything that reads as an ad, and its voting system buries posts that feel self-serving before most people see them. Genuine, specific answers inside the right subreddit build the credibility that makes people ask for more themselves — and because Reddit threads rank extremely well on Google, a good answer today keeps working as organic traffic for years." },
-  pinterest: { name: "Pinterest", headline: "The way in: Build for search, not for the scroll.", context: "Pinterest functions less like a social feed and more like a visual search engine — pins with keyword-rich titles and descriptions can keep surfacing in search results for months, unlike the 24–48 hour lifespan of a typical social post. That long tail is also why Pinterest is the one platform where a direct, clickable link on the pin itself is expected rather than penalized." }
-};
-const platformModal = document.getElementById("platform-modal");
-let lastFocusedPlatform;
-function openPlatform(key) {
-  const data = platformData[key];
-  if (!data) return;
-  lastFocusedPlatform = document.activeElement;
-  document.getElementById("platform-modal-tag").textContent = data.name;
-  document.getElementById("platform-modal-title").textContent = data.headline;
-  document.getElementById("platform-modal-context").textContent = data.context;
-  platformModal.hidden = false;
-  document.body.classList.add("modal-open");
-  platformModal.querySelector(".modal-close").focus();
-}
-function closePlatform() {
-  platformModal.hidden = true;
-  document.body.classList.remove("modal-open");
-  lastFocusedPlatform?.focus();
-}
-document.querySelectorAll("[data-platform-open]").forEach((button) => {
-  button.addEventListener("click", () => openPlatform(button.dataset.platformOpen));
-});
-document.querySelectorAll("[data-close-platform-modal]").forEach((item) => item.addEventListener("click", closePlatform));
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !platformModal.hidden) closePlatform();
-});
-
-const toast = document.getElementById("toast");
-document.getElementById("message-button").addEventListener("click", () => {
-  toast.classList.add("show");
-  window.clearTimeout(window.toastTimer);
-  window.toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3200);
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
+  /* Desktop-only parallax on the About portrait; reverted automatically below 901px */
+  if (hasST) {
+    mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', function(){
+      gsap.set('#portraitPhoto', { scale: 1.12, transformOrigin: '50% 50%' });
+      gsap.fromTo('#portraitPhoto',
+        { yPercent: -3 },
+        { yPercent: 3, ease: 'none',
+          scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
+    });
+  }
+})();
 </script>
-  <script>const originalMain = document.querySelector('main');
-const extraPages = [...document.querySelectorAll('.extra-page')];
-const pageHashes = ['#reels-showcase','#platform-playbook','#sample-data'];
-function showPortfolioPage(){
-  const hash = location.hash;
-  const selected = pageHashes.includes(hash);
-  originalMain.hidden = selected;
-  extraPages.forEach(page => page.hidden = '#' + page.id !== hash);
-  if(selected) { window.scrollTo(0,0); document.querySelector(hash+' h1').focus({preventScroll:true}); }
-}
-addEventListener('hashchange',showPortfolioPage);
-showPortfolioPage();
-document.querySelectorAll('[data-scroll]').forEach(button=>button.addEventListener('click',()=>{
-  if(originalMain.hidden){ location.hash=button.dataset.scroll; }
-}));
-document.querySelectorAll('.reel-upload').forEach(input=>input.addEventListener('change',()=>{
-  const file=input.files[0];
-  if(!file)return;
-  const screen=input.closest('.reel-card').querySelector('.phone-screen');
-  if(!file.type.startsWith('image/')&&!file.type.startsWith('video/'))return;
-  if(screen.dataset.url) URL.revokeObjectURL(screen.dataset.url);
-  const url=URL.createObjectURL(file);screen.dataset.url=url;
-  screen.querySelectorAll('img,video').forEach(el=>el.remove());
-  const media=document.createElement(file.type.startsWith('video/')?'video':'img');
-  if(media.tagName==='VIDEO'){media.controls=true;media.playsInline=true;}else{media.alt='Selected Reel cover preview';}
-  media.src=url;screen.appendChild(media);
-}));
-</script></body>
+</body>
 </html>
